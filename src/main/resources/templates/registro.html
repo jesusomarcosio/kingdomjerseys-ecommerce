@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+    <title>KingdomJerseys — Crear cuenta</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/css/styles.css">
+  </head>
+  <body>
+
+    <div class="promo">TU PRÓXIMA CAMISETA, MÁS CERCA. ENVÍO GRATIS DESDE 500$</div>
+    <nav class="site-nav">
+      <a class="logo" href="/index"><span class="bar"></span>KINGDOMJERSEYS</a>
+      <ul class="nav-links">
+        <li><a href="/novedades">Novedades</a></li>
+        <li><a href="/novedades?categoria=clubes">Clubes</a></li>
+        <li><a href="/novedades?categoria=selecciones">Selecciones</a></li>
+        <li><a href="/novedades?categoria=retro">Retro</a></li>
+      </ul>
+      <form class="nav-search" action="/novedades" method="get" role="search">
+        <svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3"/></svg>
+        <input type="text" name="buscar" placeholder="Busca tu equipo o camiseta" autocomplete="off">
+      </form>
+      <div class="nav-tools">
+        <a href="/iniciar-sesion" aria-label="Cuenta">
+          <svg viewBox="0 0 24 24"><path d="M20 21a8 8 0 1 0-16 0"/><circle cx="12" cy="7" r="4"/></svg>
+        </a>
+      </div>
+    </nav>
+
+    <main>
+      <div class="auth-wrap">
+        <div class="auth-panel">
+          <h2>Crea tu cuenta</h2>
+          <p>Guarda tus tallas y repite tu pedido más rápido la próxima vez.</p>
+          <form action="/crear-cuenta" method="post">
+            <div class="form-group"><label for="nombre">Nombre</label><input type="text" id="nombre" name="nombre" placeholder="Tu nombre" required></div>
+            <div class="form-group"><label for="correo">Correo</label><input type="email" id="correo" name="correo" placeholder="tú@ejemplo.com" required></div>
+            <div class="form-group"><label for="contrasenia">Contraseña</label><input type="password" id="contrasenia" name="contrasenia" placeholder="••••••••" required></div>
+            <button class="btn btn-primary btn-full" type="submit">Crear cuenta</button>
+          </form>
+          <p class="auth-foot">¿Ya tienes cuenta? <a href="/iniciar-sesion">Inicia sesión</a></p>
+        </div>
+      </div>
+    </main>
+
+    <div class="benefits">
+      <div class="benefits-grid">
+        <div class="benefit">
+          <svg viewBox="0 0 24 24"><path d="M14 18V6a1 1 0 0 0-1-1H3a1 1 0 0 0-1 1v11a1 1 0 0 0 1 1h1"/><path d="M14 9h4l4 4v4a1 1 0 0 1-1 1h-1"/><circle cx="7" cy="18" r="2"/><circle cx="17" cy="18" r="2"/></svg>
+          <h4>Directo a tu puerta</h4>
+          <p>Envío gratis desde 90 € en España peninsular. Entrega en 3–5 días laborales.</p>
+        </div>
+        <div class="benefit">
+          <svg viewBox="0 0 24 24"><path d="M3 12a9 9 0 0 1 15-6.7L21 8"/><path d="M21 3v5h-5"/><path d="M21 12a9 9 0 0 1-15 6.7L3 16"/><path d="M3 21v-5h5"/></svg>
+          <h4>Cambios sin líos</h4>
+          <p>Tienes 30 días para cambiar de talla. Consulta las condiciones de devolución.</p>
+        </div>
+        <div class="benefit">
+          <svg viewBox="0 0 24 24"><path d="M3 7h18M3 12h12M3 17h6"/></svg>
+          <h4>Encuentra tu talla</h4>
+          <p>Medidas reales en cada producto para que tu próxima camiseta te quede bien.</p>
+        </div>
+        <div class="benefit">
+          <svg viewBox="0 0 24 24"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+          <h4>Aquí para ayudarte</h4>
+          <p>Te atendemos de lunes a viernes. Escríbenos a kingdomjerseys.mx</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="newsletter">
+      <div>
+        <div class="eyebrow">EL MEJOR FICHAJE ES ESTAR DENTRO</div>
+        <h3>ÚNETE A KINGDOMJERSEYS.</h3>
+        <p>Nuevos lanzamientos, clásicos y fútbol. Sin ruido de más.</p>
+      </div>
+      <button class="btn btn-primary" type="button">Síguenos en Instagram</button>
+    </div>
+
+    <footer>
+      <div class="footer-top">
+        <div>
+          <p class="footer-brand">KINGDOMJERSEYS</p>
+          <p class="footer-tag">Fútbol en la piel. Historia en cada hilo. Tienda independiente de camisetas y diseños inspirados en la cultura del fútbol. Sin afiliación oficial con clubes o selecciones.</p>
+        </div>
+        <div class="footer-col">
+          <h5>LA TIENDA</h5>
+          <ul>
+            <li><a href="/novedades">Novedades</a></li>
+            <li><a href="/novedades?categoria=clubes">Camisetas de clubes</a></li>
+            <li><a href="/novedades?categoria=selecciones">Selecciones</a></li>
+            <li><a href="/novedades?categoria=retro">Colección retro</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h5>TE AYUDAMOS</h5>
+          <ul>
+            <li><a href="#">Envíos y entregas</a></li>
+            <li><a href="#">Cambios y devoluciones</a></li>
+            <li><a href="#">Guía de tallas</a></li>
+            <li><a href="#">Preguntas frecuentes</a></li>
+            <li><a href="#">Contacto</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h5>KINGDOMJERSEYS</h5>
+          <ul>
+            <li><a href="#">Nuestra historia</a></li>
+            <li><a href="#">Instagram</a></li>
+            <li><a href="#">TikTok</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span>© 2026 kingdomjerseys. Todos los precios incluyen IVA.</span>
+        <span>Privacidad · Cookies · Condiciones de compra</span>
+        <span>México / MX $</span>
+      </div>
+    </footer>
+
+  </body>
+</html>
