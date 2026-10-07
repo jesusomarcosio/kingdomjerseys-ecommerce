@@ -2,86 +2,93 @@
 <html lang="es">
   <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>KingdomJerseys — Algo salió mal</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+    <link rel="icon" href="/imgs/logo-corona.svg" type="image/svg+xml">
     <link rel="stylesheet" href="/css/styles.css">
   </head>
   <body>
-
-    <div class="promo">TU PRÓXIMA CAMISETA, MÁS CERCA. ENVÍO GRATIS DESDE 500$</div>
-    <nav class="site-nav">
-      <a class="logo" href="/index"><span class="bar"></span>KINGDOMJERSEYS</a>
-      <ul class="nav-links">
-        <li><a href="/novedades">Novedades</a></li>
-        <li><a href="/novedades?categoria=clubes">Clubes</a></li>
-        <li><a href="/novedades?categoria=selecciones">Selecciones</a></li>
-        <li><a href="/novedades?categoria=retro">Retro</a></li>
-      </ul>
-      <form class="nav-search" action="/novedades" method="get" role="search">
-        <svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3"/></svg>
-        <input type="text" name="buscar" placeholder="Busca tu equipo o camiseta" autocomplete="off">
-      </form>
-      <div class="nav-tools">
-        <a href="/iniciar-sesion" aria-label="Cuenta">
-          <svg viewBox="0 0 24 24"><path d="M20 21a8 8 0 1 0-16 0"/><circle cx="12" cy="7" r="4"/></svg>
-        </a>
+    <div class="marquee" aria-label="Avisos de la tienda">
+      <div class="marquee-track">
+        <div class="marquee-group">
+          <span>ENVÍOS A TODO MÉXICO</span>
+          <span>TEMPORADA 25/26 YA DISPONIBLE</span>
+          <span>PAGA CONTRA ENTREGA</span>
+          <span>ENVÍO GRATIS DESDE $500</span>
+        </div>
+        <div class="marquee-group" aria-hidden="true">
+          <span>ENVÍOS A TODO MÉXICO</span>
+          <span>TEMPORADA 25/26 YA DISPONIBLE</span>
+          <span>PAGA CONTRA ENTREGA</span>
+          <span>ENVÍO GRATIS DESDE $500</span>
+        </div>
       </div>
-    </nav>
+    </div>
+
+    <header class="site-header">
+      <nav class="site-nav">
+        <a class="logo" href="/">
+          <img src="/imgs/logo-corona.svg" alt="">
+          <span>KINGDOMJERSEYS</span>
+        </a>
+        <input type="checkbox" id="menu-toggle" aria-label="Abrir menú">
+        <ul class="nav-links">
+          <li><a href="/novedades">Novedades</a></li>
+          <li><a href="/novedades?categoria=clubes">Clubes</a></li>
+          <li><a href="/novedades?categoria=selecciones">Selecciones</a></li>
+          <li><a href="/novedades?categoria=retro">Retro</a></li>
+          <li class="only-mobile"><a href="/iniciar-sesion">Iniciar sesión</a></li>
+        </ul>
+        <div class="nav-tools">
+          <form class="nav-search" action="/novedades" method="get" role="search">
+            <img class="ico" src="/imgs/iconos/search-ink.svg" alt="">
+            <input type="text" name="buscar" placeholder="Busca tu equipo o camiseta" autocomplete="off">
+          </form>
+          <a class="nav-icon nav-user" href="/iniciar-sesion" aria-label="Cuenta">
+            <img class="ico" src="/imgs/iconos/user-round-ink.svg" alt="">
+          </a>
+          <a class="nav-icon" href="/carrito" aria-label="Carrito">
+            <img class="ico" src="/imgs/iconos/shopping-bag-ink.svg" alt="">
+            <span>(0)</span>
+          </a>
+          <label class="menu-btn" for="menu-toggle">
+            <img class="ico" src="/imgs/iconos/menu-ink.svg" alt="">
+          </label>
+        </div>
+      </nav>
+    </header>
 
     <main>
-      <div class="error-wrap">
+      <section class="error-page">
+        <div class="eyebrow">ERROR</div>
         <h1>¡Ups! Algo salió mal.</h1>
         <p>La página que buscas no existe o tu correo y contraseña no coinciden. Intenta de nuevo.</p>
         <div class="error-actions">
-          <a href="/iniciar-sesion" class="btn btn-primary">Volver a iniciar sesión</a>
-          <a href="/index" class="btn btn-ghost">Ir al inicio</a>
+          <a class="btn btn-primary" href="/iniciar-sesion">Volver a iniciar sesión</a>
+          <a class="btn btn-outline" href="/">Ir al inicio</a>
         </div>
-      </div>
+      </section>
     </main>
-
-    <div class="benefits">
-      <div class="benefits-grid">
-        <div class="benefit">
-          <svg viewBox="0 0 24 24"><path d="M14 18V6a1 1 0 0 0-1-1H3a1 1 0 0 0-1 1v11a1 1 0 0 0 1 1h1"/><path d="M14 9h4l4 4v4a1 1 0 0 1-1 1h-1"/><circle cx="7" cy="18" r="2"/><circle cx="17" cy="18" r="2"/></svg>
-          <h4>Directo a tu puerta</h4>
-          <p>Envío gratis desde 90 € en España peninsular. Entrega en 3–5 días laborales.</p>
-        </div>
-        <div class="benefit">
-          <svg viewBox="0 0 24 24"><path d="M3 12a9 9 0 0 1 15-6.7L21 8"/><path d="M21 3v5h-5"/><path d="M21 12a9 9 0 0 1-15 6.7L3 16"/><path d="M3 21v-5h5"/></svg>
-          <h4>Cambios sin líos</h4>
-          <p>Tienes 30 días para cambiar de talla. Consulta las condiciones de devolución.</p>
-        </div>
-        <div class="benefit">
-          <svg viewBox="0 0 24 24"><path d="M3 7h18M3 12h12M3 17h6"/></svg>
-          <h4>Encuentra tu talla</h4>
-          <p>Medidas reales en cada producto para que tu próxima camiseta te quede bien.</p>
-        </div>
-        <div class="benefit">
-          <svg viewBox="0 0 24 24"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
-          <h4>Aquí para ayudarte</h4>
-          <p>Te atendemos de lunes a viernes. Escríbenos a kingdomjerseys.mx</p>
-        </div>
-      </div>
-    </div>
-
-    <div class="newsletter">
-      <div>
-        <div class="eyebrow">EL MEJOR FICHAJE ES ESTAR DENTRO</div>
-        <h3>ÚNETE A KINGDOMJERSEYS.</h3>
-        <p>Nuevos lanzamientos, clásicos y fútbol. Sin ruido de más.</p>
-      </div>
-      <button class="btn btn-primary" type="button">Síguenos en Instagram</button>
-    </div>
 
     <footer>
       <div class="footer-top">
         <div>
           <p class="footer-brand">KINGDOMJERSEYS</p>
-          <p class="footer-tag">Fútbol en la piel. Historia en cada hilo. Tienda independiente de camisetas y diseños inspirados en la cultura del fútbol. Sin afiliación oficial con clubes o selecciones.</p>
+          <p class="footer-tag">Fútbol en la piel. Historia en cada hilo.</p>
+          <p class="footer-note">
+            Tienda independiente de camisetas y diseños inspirados en la cultura del fútbol. Sin afiliación oficial con clubes o selecciones.
+          </p>
+          <div class="footer-social">
+            <a href="#" aria-label="Instagram">
+              <img class="ico" src="/imgs/iconos/instagram-hueso.svg" alt="">
+            </a>
+            <a href="#" aria-label="TikTok"><img class="ico" src="/imgs/iconos/send-hueso.svg" alt=""></a>
+          </div>
         </div>
+
         <div class="footer-col">
           <h5>LA TIENDA</h5>
           <ul>
@@ -89,9 +96,10 @@
             <li><a href="/novedades?categoria=clubes">Camisetas de clubes</a></li>
             <li><a href="/novedades?categoria=selecciones">Selecciones</a></li>
             <li><a href="/novedades?categoria=retro">Colección retro</a></li>
-            <li><a href="/novedades?categoria=tribuna">Tribuna Studio</a></li>
+            <li><a href="/novedades">Kingdom Studio</a></li>
           </ul>
         </div>
+
         <div class="footer-col">
           <h5>TE AYUDAMOS</h5>
           <ul>
@@ -102,6 +110,7 @@
             <li><a href="#">Contacto</a></li>
           </ul>
         </div>
+
         <div class="footer-col">
           <h5>KINGDOMJERSEYS</h5>
           <ul>
@@ -111,12 +120,16 @@
           </ul>
         </div>
       </div>
+
       <div class="footer-bottom">
         <span>© 2026 kingdomjerseys. Todos los precios incluyen IVA.</span>
-        <span>Privacidad · Cookies · Condiciones de compra</span>
+        <nav>
+          <a href="#">Privacidad</a>
+          <a href="#">Cookies</a>
+          <a href="#">Condiciones de compra</a>
+        </nav>
         <span>México / MX $</span>
       </div>
     </footer>
-
   </body>
 </html>

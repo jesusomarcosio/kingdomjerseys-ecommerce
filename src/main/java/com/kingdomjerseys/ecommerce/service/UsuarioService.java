@@ -9,7 +9,7 @@ import java.util.concurrent.ConcurrentHashMap;
 @Service
 public class UsuarioService {
 
-    // Simulación de base de datos
+
     private final Map<String, Usuario> usuarios = new ConcurrentHashMap<>();
 
     public UsuarioService() {

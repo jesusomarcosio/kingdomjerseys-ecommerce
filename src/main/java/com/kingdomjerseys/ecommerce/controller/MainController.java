@@ -20,6 +20,8 @@ import java.util.List;
 @Controller
 public class MainController {
 
+    private static final List<String> CATEGORIAS = List.of("todas", "clubes", "selecciones", "retro");
+
     private final UsuarioService usuarioService;
     private final ProductoService productoService;
     private final CarritoService carritoService;
@@ -37,8 +39,19 @@ public class MainController {
         return "index";
     }
 
+    // /novedades?categoria=clubes&buscar=real  (los dos parámetros son opcionales)
     @GetMapping({"/novedades", "/novedades.html"})
-    public String novedades() {
+    public String novedades(@RequestParam(name = "categoria", defaultValue = "todas") String categoria,
+                            @RequestParam(name = "buscar", defaultValue = "") String buscar,
+                            Model model) {
+        if (!CATEGORIAS.contains(categoria)) {
+            categoria = "todas"; // una categoría inventada se trata como "todas"
+        }
+        buscar = buscar.trim();
+
+        model.addAttribute("productos", productoService.filtrar(categoria, buscar));
+        model.addAttribute("categoria", categoria);
+        model.addAttribute("buscar", buscar.isEmpty() ? null : buscar);
         return "novedades";
     }
 
@@ -79,9 +92,13 @@ public class MainController {
 
     // Cada camiseta tiene su página: /producto/mexico-seleccion, /producto/argentina...
     @GetMapping("/producto/{id}")
-    public String producto(@PathVariable String id, Model model) {
+    public String producto(@PathVariable String id,
+                           @RequestParam(name = "cantidad", defaultValue = "1") int cantidad,
+                           Model model) {
         model.addAttribute("producto", productoService.buscar(id)
                 .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND)));
+        // La cantidad elegida viaja en la dirección: /producto/argentina?cantidad=3
+        model.addAttribute("cantidad", Math.clamp(cantidad, 1, CarritoService.CANTIDAD_MAXIMA));
         return "producto";
     }
 

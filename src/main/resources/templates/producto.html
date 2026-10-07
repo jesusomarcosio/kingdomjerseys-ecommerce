@@ -37,9 +37,9 @@
         <input type="checkbox" id="menu-toggle" aria-label="Abrir menú">
         <ul class="nav-links">
           <li><a href="/novedades" class="active">Novedades</a></li>
-          <li><a href="/novedades#clubes">Clubes</a></li>
-          <li><a href="/novedades#selecciones">Selecciones</a></li>
-          <li><a href="/novedades#retro">Retro</a></li>
+          <li><a href="/novedades?categoria=clubes">Clubes</a></li>
+          <li><a href="/novedades?categoria=selecciones">Selecciones</a></li>
+          <li><a href="/novedades?categoria=retro">Retro</a></li>
           <li class="only-mobile"><a href="/iniciar-sesion">Iniciar sesión</a></li>
         </ul>
         <div class="nav-tools">
@@ -77,12 +77,13 @@
           <p class="product-price" th:text="'$ ' + ${#numbers.formatInteger(producto.precio,1,'COMMA')}">$ 600</p>
           <form action="/carrito/agregar" method="post">
             <input type="hidden" name="id" th:value="*{id}">
-            <input type="hidden" name="cantidad" id="cantidad" value="1">
+            <!--/*@thymesVar id="cantidad" type="java.lang.Integer"*/-->
+            <input type="hidden" name="cantidad" th:value="${cantidad}" value="1">
             <p class="qty-label">Cantidad</p>
             <div class="qty">
-              <button type="button" aria-label="Más" data-cambio="1">+</button>
-              <span id="cantidad-texto">1</span>
-              <button type="button" aria-label="Menos" data-cambio="-1">-</button>
+              <a href="/producto/argentina?cantidad=2" th:href="@{/producto/{id}(id=*{id},cantidad=${cantidad + 1})}" aria-label="Más">+</a>
+              <span th:text="${cantidad}">1</span>
+              <a href="/producto/argentina?cantidad=1" th:href="@{/producto/{id}(id=*{id},cantidad=${cantidad - 1})}" aria-label="Menos">-</a>
             </div>
             <button class="btn btn-primary btn-wide" type="submit">
               <img class="ico" src="/imgs/iconos/shopping-bag-blanco.svg" alt="">
@@ -146,9 +147,9 @@
           <h5>LA TIENDA</h5>
           <ul>
             <li><a href="/novedades">Novedades</a></li>
-            <li><a href="/novedades#clubes">Camisetas de clubes</a></li>
-            <li><a href="/novedades#selecciones">Selecciones</a></li>
-            <li><a href="/novedades#retro">Colección retro</a></li>
+            <li><a href="/novedades?categoria=clubes">Camisetas de clubes</a></li>
+            <li><a href="/novedades?categoria=selecciones">Selecciones</a></li>
+            <li><a href="/novedades?categoria=retro">Colección retro</a></li>
             <li><a href="/novedades">Kingdom Studio</a></li>
           </ul>
         </div>
@@ -184,6 +185,5 @@
         <span>México / MX $</span>
       </div>
     </footer>
-    <script src="/js/producto.js"></script>
   </body>
 </html>

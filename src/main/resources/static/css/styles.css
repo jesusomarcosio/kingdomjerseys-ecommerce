@@ -1272,7 +1272,8 @@ footer {
   padding: 4px 12px;
 }
 
-.qty button {
+.qty button,
+.qty a {
   background: transparent;
   border: 0;
   color: var(--green);
@@ -2057,4 +2058,38 @@ footer {
   color: var(--muted);
   padding: 40px 0;
   text-align: center;
+}
+
+.sin-resultados {
+  color: var(--muted);
+  grid-column: 1 / -1;
+  padding: 60px 0;
+  text-align: center;
+}
+
+/* Error*/
+.error-page {
+  margin: 0 auto;
+  max-width: 560px;
+  padding: 96px 20px;
+  text-align: center;
+}
+
+.error-page h1 {
+  font-family: var(--font-display);
+  font-size: 56px;
+  line-height: 1;
+  margin: 12px 0 16px;
+}
+
+.error-page p {
+  color: var(--muted);
+  margin-bottom: 32px;
+}
+
+.error-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  justify-content: center;
 }

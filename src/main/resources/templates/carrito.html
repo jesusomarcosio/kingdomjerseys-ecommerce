@@ -1,5 +1,7 @@
 <!DOCTYPE html>
 <html lang="es" xmlns:th="http://www.thymeleaf.org">
+  <!--/*@thymesVar id="items" type="java.util.List<com.kingdomjerseys.ecommerce.model.ItemCarrito>"*/-->
+  <!--/*@thymesVar id="subtotal" type="java.lang.Integer"*/-->
   <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -37,9 +39,9 @@
         <input type="checkbox" id="menu-toggle" aria-label="Abrir menú">
         <ul class="nav-links">
           <li><a href="/novedades" class="active">Novedades</a></li>
-          <li><a href="/novedades#clubes">Clubes</a></li>
-          <li><a href="/novedades#selecciones">Selecciones</a></li>
-          <li><a href="/novedades#retro">Retro</a></li>
+          <li><a href="/novedades?categoria=clubes">Clubes</a></li>
+          <li><a href="/novedades?categoria=selecciones">Selecciones</a></li>
+          <li><a href="/novedades?categoria=retro">Retro</a></li>
           <li class="only-mobile"><a href="/iniciar-sesion">Iniciar sesión</a></li>
         </ul>
         <div class="nav-tools">
@@ -154,9 +156,9 @@
           <h5>LA TIENDA</h5>
           <ul>
             <li><a href="/novedades">Novedades</a></li>
-            <li><a href="/novedades#clubes">Camisetas de clubes</a></li>
-            <li><a href="/novedades#selecciones">Selecciones</a></li>
-            <li><a href="/novedades#retro">Colección retro</a></li>
+            <li><a href="/novedades?categoria=clubes">Camisetas de clubes</a></li>
+            <li><a href="/novedades?categoria=selecciones">Selecciones</a></li>
+            <li><a href="/novedades?categoria=retro">Colección retro</a></li>
             <li><a href="/novedades">Kingdom Studio</a></li>
           </ul>
         </div>

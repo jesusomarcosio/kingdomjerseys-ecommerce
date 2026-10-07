@@ -1,9 +1,12 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+  <!--/*@thymesVar id="productos" type="java.util.List<com.kingdomjerseys.ecommerce.model.Producto>"*/-->
+  <!--/*@thymesVar id="categoria" type="java.lang.String"*/-->
+  <!--/*@thymesVar id="buscar" type="java.lang.String"*/-->
   <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>KingdomJerseys — Novedades</title>
+    <title th:text="${buscar != null} ? 'KingdomJerseys — Resultados' : 'KingdomJerseys — Novedades'">KingdomJerseys — Novedades</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
@@ -37,15 +40,15 @@
         <input type="checkbox" id="menu-toggle" aria-label="Abrir menú">
         <ul class="nav-links">
           <li><a href="/novedades" class="active">Novedades</a></li>
-          <li><a href="/novedades#clubes">Clubes</a></li>
-          <li><a href="/novedades#selecciones">Selecciones</a></li>
-          <li><a href="/novedades#retro">Retro</a></li>
+          <li><a href="/novedades?categoria=clubes">Clubes</a></li>
+          <li><a href="/novedades?categoria=selecciones">Selecciones</a></li>
+          <li><a href="/novedades?categoria=retro">Retro</a></li>
           <li class="only-mobile"><a href="/iniciar-sesion">Iniciar sesión</a></li>
         </ul>
         <div class="nav-tools">
           <form class="nav-search" action="/novedades" method="get" role="search">
             <img class="ico" src="/imgs/iconos/search-ink.svg" alt="">
-            <input type="text" name="buscar" placeholder="Busca tu equipo o camiseta" autocomplete="off">
+            <input type="text" name="buscar" th:value="${buscar}" placeholder="Busca tu equipo o camiseta" autocomplete="off">
           </form>
           <a class="nav-icon nav-user" href="/iniciar-sesion" aria-label="Cuenta">
             <img class="ico" src="/imgs/iconos/user-round-ink.svg" alt="">
@@ -62,22 +65,22 @@
     </header>
 
     <main>
-      <div class="breadcrumb"><a href="/">Inicio</a><span>/</span><span>Novedades</span></div>
+      <div class="breadcrumb"><a href="/">Inicio</a><span>/</span><span th:text="${buscar != null} ? 'Resultados' : 'Novedades'">Novedades</span></div>
       <div class="catalog-head">
-        <div class="eyebrow">RECIÉN LLEGADAS</div>
-        <h1>NOVEDADES.</h1>
+        <div class="eyebrow" th:text="${buscar != null} ? 'BÚSQUEDA' : 'RECIÉN LLEGADAS'">RECIÉN LLEGADAS</div>
+        <h1 th:text="${buscar != null} ? 'Resultados para “' + ${buscar} + '”.' : 'Novedades.'">NOVEDADES.</h1>
         <p>Lo último en llegar a la tienda: clubes, selecciones y piezas.</p>
       </div>
 
       <div class="filter-bar">
         <div class="tabs">
-          <a class="active" href="/novedades">Todas</a>
-          <a href="#clubes">Clubes</a>
-          <a href="#selecciones">Selecciones</a>
-          <a href="#retro">Retro</a>
+          <a href="/novedades" th:href="@{/novedades(buscar=${buscar})}" th:classappend="${categoria == 'todas'} ? 'active'">Todas</a>
+          <a href="/novedades?categoria=clubes" th:href="@{/novedades(categoria='clubes',buscar=${buscar})}" th:classappend="${categoria == 'clubes'} ? 'active'">Clubes</a>
+          <a href="/novedades?categoria=selecciones" th:href="@{/novedades(categoria='selecciones',buscar=${buscar})}" th:classappend="${categoria == 'selecciones'} ? 'active'">Selecciones</a>
+          <a href="/novedades?categoria=retro" th:href="@{/novedades(categoria='retro',buscar=${buscar})}" th:classappend="${categoria == 'retro'} ? 'active'">Retro</a>
         </div>
         <div class="filter-meta">
-          <span>8 productos</span>
+          <span th:text="${#lists.size(productos) + (#lists.size(productos) == 1 ? ' producto' : ' productos')}">8 productos</span>
           <select aria-label="Ordenar">
             <option>Más recientes</option>
             <option>Precio: menor a mayor</option>
@@ -88,104 +91,19 @@
 
       <div class="catalog">
         <div class="grid-4 rows">
-          <article class="card">
+          <article class="card" th:each="producto : ${productos}">
             <div class="card-photo">
-              <a href="/producto/madrid-visitante"><img src="/imgs/madrid-visitante.jpg" alt="Real Madrid · Visitante"></a>
-              <span class="badge">NUEVA</span>
+              <a href="/producto/madrid-visitante" th:href="@{/producto/{id}(id=${producto.id})}"><img src="/imgs/madrid-visitante.jpg" th:src="@{/imgs/{f}(f=${producto.imagen})}" th:alt="${producto.nombre}" alt="Real Madrid · Visitante"></a>
+              <span class="badge" th:if="${producto.etiqueta != null}" th:text="${producto.etiqueta}">NUEVA</span>
               <button class="wish" type="button" aria-label="Guardar producto">
                 <img class="ico" src="/imgs/iconos/heart-ink.svg" alt="">
               </button>
             </div>
-            <h3><a href="/producto/madrid-visitante">Real Madrid · Visitante</a></h3>
-            <p class="desc">Temporada 25/26 · Adulto · S–XXL</p>
-            <p class="price">$600</p>
+            <h3><a href="/producto/madrid-visitante" th:href="@{/producto/{id}(id=${producto.id})}" th:text="${producto.nombre}">Real Madrid · Visitante</a></h3>
+            <p class="desc" th:text="${producto.resumen}">Temporada 25/26 · Adulto · S–XXL</p>
+            <p class="price" th:text="'$' + ${producto.precio}">$600</p>
           </article>
-
-          <article class="card">
-            <div class="card-photo">
-              <a href="/producto/boca-local"><img src="/imgs/boca-local.jpg" alt="Boca Juniors · Local"></a>
-              <button class="wish" type="button" aria-label="Guardar producto">
-                <img class="ico" src="/imgs/iconos/heart-ink.svg" alt="">
-              </button>
-            </div>
-            <h3><a href="/producto/boca-local">Boca Juniors · Local</a></h3>
-            <p class="desc">Temporada 25/26 · Adulto · S–XXL</p>
-            <p class="price">$600</p>
-          </article>
-
-          <article class="card">
-            <div class="card-photo">
-              <a href="/producto/mexico-seleccion"><img src="/imgs/mexico-seleccion.jpg" alt="México · Selección"></a>
-              <span class="badge">MÁS VENDIDA</span>
-              <button class="wish" type="button" aria-label="Guardar producto">
-                <img class="ico" src="/imgs/iconos/heart-ink.svg" alt="">
-              </button>
-            </div>
-            <h3><a href="/producto/mexico-seleccion">México · Selección</a></h3>
-            <p class="desc">Selecciones · Adulto · S–XXL</p>
-            <p class="price">$600</p>
-          </article>
-
-          <article class="card">
-            <div class="card-photo">
-              <a href="/producto/liverpool-local"><img src="/imgs/liverpool-local.jpg" alt="Liverpool · Local"></a>
-              <button class="wish" type="button" aria-label="Guardar producto">
-                <img class="ico" src="/imgs/iconos/heart-ink.svg" alt="">
-              </button>
-            </div>
-            <h3><a href="/producto/liverpool-local">Liverpool · Local</a></h3>
-            <p class="desc">Temporada 25/26 · Adulto · S–XXL</p>
-            <p class="price">$600</p>
-          </article>
-
-          <article class="card">
-            <div class="card-photo">
-              <a href="/producto/juventus-local"><img src="/imgs/juventus-local.jpg" alt="Juventus · Local"></a>
-              <button class="wish" type="button" aria-label="Guardar producto">
-                <img class="ico" src="/imgs/iconos/heart-ink.svg" alt="">
-              </button>
-            </div>
-            <h3><a href="/producto/juventus-local">Juventus · Local</a></h3>
-            <p class="desc">Temporada 25/26 · Adulto · S–XXL</p>
-            <p class="price">$600</p>
-          </article>
-
-          <article class="card">
-            <div class="card-photo">
-              <a href="/producto/river-local"><img src="/imgs/river-local.jpg" alt="River Plate · Local"></a>
-              <span class="badge">NUEVA</span>
-              <button class="wish" type="button" aria-label="Guardar producto">
-                <img class="ico" src="/imgs/iconos/heart-ink.svg" alt="">
-              </button>
-            </div>
-            <h3><a href="/producto/river-local">River Plate · Local</a></h3>
-            <p class="desc">Temporada 25/26 · Adulto · S–XXL</p>
-            <p class="price">$600</p>
-          </article>
-
-          <article class="card">
-            <div class="card-photo">
-              <a href="/producto/alemania-seleccion"><img src="/imgs/alemania-seleccion.jpg" alt="Alemania · Selección"></a>
-              <button class="wish" type="button" aria-label="Guardar producto">
-                <img class="ico" src="/imgs/iconos/heart-ink.svg" alt="">
-              </button>
-            </div>
-            <h3><a href="/producto/alemania-seleccion">Alemania · Selección</a></h3>
-            <p class="desc">Selecciones · Adulto · S–XXL</p>
-            <p class="price">$600</p>
-          </article>
-
-          <article class="card">
-            <div class="card-photo">
-              <a href="/producto/psg-local"><img src="/imgs/psg-local.jpg" alt="PSG · Local"></a>
-              <button class="wish" type="button" aria-label="Guardar producto">
-                <img class="ico" src="/imgs/iconos/heart-ink.svg" alt="">
-              </button>
-            </div>
-            <h3><a href="/producto/psg-local">PSG · Local</a></h3>
-            <p class="desc">Temporada 25/26 · Adulto · S–XXL</p>
-            <p class="price">$600</p>
-          </article>
+          <p class="sin-resultados" th:if="${#lists.isEmpty(productos)}">No encontramos camisetas con ese filtro. Prueba con otra categoría o busca por el nombre de tu equipo.</p>
         </div>
         <div class="load-more"><a class="btn btn-outline" href="#">Cargar más productos</a></div>
       </div>
@@ -252,9 +170,9 @@
           <h5>LA TIENDA</h5>
           <ul>
             <li><a href="/novedades">Novedades</a></li>
-            <li><a href="/novedades#clubes">Camisetas de clubes</a></li>
-            <li><a href="/novedades#selecciones">Selecciones</a></li>
-            <li><a href="/novedades#retro">Colección retro</a></li>
+            <li><a href="/novedades?categoria=clubes">Camisetas de clubes</a></li>
+            <li><a href="/novedades?categoria=selecciones">Selecciones</a></li>
+            <li><a href="/novedades?categoria=retro">Colección retro</a></li>
             <li><a href="/novedades">Kingdom Studio</a></li>
           </ul>
         </div>

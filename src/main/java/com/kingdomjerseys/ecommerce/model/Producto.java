@@ -12,9 +12,12 @@ public class Producto {
     private String material;
     private String ajuste;
     private String color;
+    private boolean novedad;
+    private String etiqueta;
 
     public Producto(String id, String nombre, String categoria, String descripcion, int precio,
-                    String imagen, String imagenDetalle, String material, String ajuste, String color) {
+                    String imagen, String imagenDetalle, String material, String ajuste, String color,
+                    boolean novedad, String etiqueta) {
         this.id = id;
         this.nombre = nombre;
         this.categoria = categoria;
@@ -25,6 +28,8 @@ public class Producto {
         this.material = material;
         this.ajuste = ajuste;
         this.color = color;
+        this.novedad = novedad;
+        this.etiqueta = etiqueta;
     }
 
     public String getId() {
@@ -47,12 +52,12 @@ public class Producto {
         return precio;
     }
 
-    // Foto de las tarjetas del catálogo
+    // Foto de las tarjetas
     public String getImagen() {
         return imagen;
     }
 
-    // Foto de la página del producto, del carrito y del resumen de compra
+    // Foto de la página del producto
     public String getImagenDetalle() {
         return imagenDetalle;
     }
@@ -67,5 +72,24 @@ public class Producto {
 
     public String getColor() {
         return color;
+    }
+
+    // Sale en las tarjetas del catálogo de Novedades
+    public boolean isNovedad() {
+        return novedad;
+    }
+
+    // Texto del distintivo de la tarjeta (NUEVA, MÁS VENDIDA...); null si no lleva
+    public String getEtiqueta() {
+        return etiqueta;
+    }
+
+    // Línea que va debajo del nombre en las tarjetas
+    public String getResumen() {
+        return switch (categoria) {
+            case "clubes" -> "Temporada 25/26 · Adulto · S–XXL";
+            case "selecciones" -> "Selecciones · Adulto · S–XXL";
+            default -> "Kingdom Studio · Corte relajado · S–XXL";
+        };
     }
 }

@@ -10,12 +10,11 @@ import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 
-// Un carrito por sesión del navegador
 @Service
 @SessionScope
 public class CarritoService {
 
-    private static final int CANTIDAD_MAXIMA = 10;
+    public static final int CANTIDAD_MAXIMA = 10;
 
     private final ProductoService productoService;
     private final Map<String, ItemCarrito> items = new LinkedHashMap<>();
@@ -61,7 +60,6 @@ public class CarritoService {
         return items.isEmpty();
     }
 
-    // Al pagar, el carrito se guarda como "última orden" para mostrarla en la confirmación
     public void confirmarCompra() {
         ultimaOrden = new ArrayList<>(items.values());
         items.clear();
