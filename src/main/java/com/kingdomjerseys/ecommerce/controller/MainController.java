@@ -62,4 +62,34 @@ public class MainController {
         return "redirect:/iniciar-sesion?logout";
     }
 
+    @GetMapping("/producto")
+    public String producto() {
+        return "producto";
+    }
+
+    @GetMapping("/carrito")
+    public String carrito() {
+        return "carrito";
+    }
+
+    @GetMapping("/datos")
+    public String datos() {
+        return "datos";
+    }
+
+    @GetMapping("/envio")
+    public String envio() {
+        return "envio";
+    }
+
+    @GetMapping("/pago")
+    public String pago() {
+        return "pago";
+    }
+
+    @GetMapping("/pago-confirmado")
+    public String pagoConfirmado() {
+        return "pago-confirmado";
+    }
+
 }

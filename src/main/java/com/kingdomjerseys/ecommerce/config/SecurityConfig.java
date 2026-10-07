@@ -21,6 +21,7 @@ public class SecurityConfig {
                         .requestMatchers("/crear-cuenta", "/autenticacion", "/cerrar-sesion").permitAll()
                         .requestMatchers("/error", "/error.html").permitAll()
                         .requestMatchers("/static/**", "/css/**", "/js/**", "/imgs/**", "/images/**").permitAll()
+                        .requestMatchers("/producto", "/carrito", "/datos", "/envio", "/pago", "/pago-confirmado").permitAll()
                         .anyRequest().authenticated()
                 );
         return http.build();
