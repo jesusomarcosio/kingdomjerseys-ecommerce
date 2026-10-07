@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
   <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -7,8 +7,8 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
-    <link rel="icon" href="imgs/logo-corona.svg" type="image/svg+xml">
-    <link rel="stylesheet" href="css/styles.css">
+    <link rel="icon" href="/imgs/logo-corona.svg" type="image/svg+xml">
+    <link rel="stylesheet" href="/css/styles.css">
   </head>
   <body>
     <div class="marquee" aria-label="Avisos de la tienda">
@@ -30,32 +30,32 @@
 
     <header class="site-header">
       <nav class="site-nav">
-        <a class="logo" href="index.html">
-          <img src="imgs/logo-corona.svg" alt="">
+        <a class="logo" href="/">
+          <img src="/imgs/logo-corona.svg" alt="">
           <span>KINGDOMJERSEYS</span>
         </a>
         <input type="checkbox" id="menu-toggle" aria-label="Abrir menú">
         <ul class="nav-links">
-          <li><a href="novedades.html" class="active">Novedades</a></li>
-          <li><a href="novedades.html#clubes">Clubes</a></li>
-          <li><a href="novedades.html#selecciones">Selecciones</a></li>
-          <li><a href="novedades.html#retro">Retro</a></li>
-          <li class="only-mobile"><a href="iniciar-sesion.html">Iniciar sesión</a></li>
+          <li><a href="/novedades" class="active">Novedades</a></li>
+          <li><a href="/novedades#clubes">Clubes</a></li>
+          <li><a href="/novedades#selecciones">Selecciones</a></li>
+          <li><a href="/novedades#retro">Retro</a></li>
+          <li class="only-mobile"><a href="/iniciar-sesion">Iniciar sesión</a></li>
         </ul>
         <div class="nav-tools">
-          <form class="nav-search" action="novedades.html" method="get" role="search">
-            <img class="ico" src="imgs/iconos/search-ink.svg" alt="">
+          <form class="nav-search" action="/novedades" method="get" role="search">
+            <img class="ico" src="/imgs/iconos/search-ink.svg" alt="">
             <input type="text" name="buscar" placeholder="Busca tu equipo o camiseta" autocomplete="off">
           </form>
-          <a class="nav-icon nav-user" href="iniciar-sesion.html" aria-label="Cuenta">
-            <img class="ico" src="imgs/iconos/user-round-ink.svg" alt="">
+          <a class="nav-icon nav-user" href="/iniciar-sesion" aria-label="Cuenta">
+            <img class="ico" src="/imgs/iconos/user-round-ink.svg" alt="">
           </a>
-          <a class="nav-icon" href="carrito.html" aria-label="Carrito">
-            <img class="ico" src="imgs/iconos/shopping-bag-ink.svg" alt="">
+          <a class="nav-icon" href="/carrito" aria-label="Carrito">
+            <img class="ico" src="/imgs/iconos/shopping-bag-ink.svg" alt="">
             <span>(0)</span>
           </a>
           <label class="menu-btn" for="menu-toggle">
-            <img class="ico" src="imgs/iconos/menu-ink.svg" alt="">
+            <img class="ico" src="/imgs/iconos/menu-ink.svg" alt="">
           </label>
         </div>
       </nav>
@@ -64,47 +64,47 @@
     <main class="checkout">
       <section class="checkout-main">
         <ol class="steps">
-          <li class="done"><a href="carrito.html">Carrito</a></li>
-          <li class="done"><a href="datos.html">Datos</a></li>
-          <li class="done"><a href="envio.html">Envío</a></li>
-          <li class="current"><a href="pago.html">Pago</a></li>
+          <li class="done"><a href="/carrito">Carrito</a></li>
+          <li class="done"><a href="/datos">Datos</a></li>
+          <li class="done"><a href="/envio">Envío</a></li>
+          <li class="current"><a href="/pago">Pago</a></li>
         </ol>
 
         <div class="review">
           <div>
             <span class="k">Contacto</span>
             <span class="v">correo@ejemplo.com</span>
-            <a href="datos.html">Editar</a>
+            <a href="/datos">Editar</a>
           </div>
           <div>
             <span class="k">Enviar a</span>
             <span class="v">Av. Ejemplo 123, Col. Centro, Cd. Obregón, Sonora, México</span>
-            <a href="datos.html">Editar</a>
+            <a href="/datos">Editar</a>
           </div>
           <div>
             <span class="k">Método</span>
             <span class="v">Envío estándar · Gratis</span>
-            <a href="envio.html">Editar</a>
+            <a href="/envio">Editar</a>
           </div>
         </div>
         <h2 class="co-sub">Método de pago</h2>
-        <form action="pago-confirmado.html" method="get">
+        <form action="/pago" method="post">
           <div class="pay-box">
             <div class="pay-head">
-              <img class="ico" src="imgs/iconos/credit-card-verde.svg" alt="">
+              <img class="ico" src="/imgs/iconos/credit-card-verde.svg" alt="">
               <span>Tarjeta de crédito</span>
             </div>
             <div class="pay-body">
               <div class="co-icon">
                 <input class="co-input" type="text" inputmode="numeric" name="tarjeta" placeholder="Número de tarjeta" aria-label="Número de tarjeta" required>
-                <img class="ico" src="imgs/iconos/lock-gris.svg" alt="">
+                <img class="ico" src="/imgs/iconos/lock-gris.svg" alt="">
               </div>
               <input class="co-input" type="text" name="titular" placeholder="Nombre del titular" aria-label="Nombre del titular" required>
               <div class="co-row">
                 <input class="co-input" type="text" name="vence" placeholder="Vencimiento (MM/AA)" aria-label="Vencimiento" required>
                 <div class="co-icon">
                   <input class="co-input" type="text" inputmode="numeric" name="cvv" placeholder="CVV" aria-label="CVV" required>
-                  <img class="ico" src="imgs/iconos/info-gris.svg" alt="">
+                  <img class="ico" src="/imgs/iconos/info-gris.svg" alt="">
                 </div>
               </div>
             </div>
@@ -121,21 +121,22 @@
             </label>
           </div>
           <div class="co-actions">
-            <a class="link-green" href="envio.html">Volver al envío</a>
+            <a class="link-green" href="/envio">Volver al envío</a>
             <button class="btn btn-primary" type="submit">Pagar ahora</button>
           </div>
         </form>
       </section>
 
       <aside class="summary">
-        <div class="sum-product">
+        <div class="sum-product" th:each="item : ${items}">
           <div class="sum-img">
-            <img src="imgs/mexico-local.jpg" alt="Camiseta México Selección">
-            <span class="sum-badge">1</span>
+            <img src="/imgs/mexico-local.jpg" alt="México · Selección"
+                 th:src="@{/imgs/{f}(f=${item.producto.imagenDetalle})}" th:alt="${item.producto.nombre}">
+            <span class="sum-badge" th:text="${item.cantidad}">1</span>
           </div>
           <div>
-            <h3>México - Selección</h3>
-            <p class="sum-price">$ 600</p>
+            <h3 th:text="${item.producto.nombre}">México · Selección</h3>
+            <p class="sum-price" th:text="'$ ' + ${#numbers.formatInteger(item.total,1,'COMMA')}">$ 600</p>
           </div>
         </div>
         <form class="coupon" action="#" method="post">
@@ -145,7 +146,7 @@
         <dl class="sum-lines">
           <div>
             <dt>Subtotal</dt>
-            <dd>$ 600</dd>
+            <dd th:text="'$ ' + ${#numbers.formatInteger(subtotal,1,'COMMA')}">$ 600</dd>
           </div>
           <div>
             <dt>Envío</dt>
@@ -155,7 +156,7 @@
         <dl class="sum-total">
           <div>
             <dt>Total</dt>
-            <dd>$ 600</dd>
+            <dd th:text="'$ ' + ${#numbers.formatInteger(subtotal,1,'COMMA')}">$ 600</dd>
           </div>
         </dl>
       </aside>
@@ -164,25 +165,25 @@
     <section class="benefits">
       <div class="wrap benefits-grid">
         <div class="benefit">
-          <img class="ico" src="imgs/iconos/truck-verde.svg" alt="">
+          <img class="ico" src="/imgs/iconos/truck-verde.svg" alt="">
           <h4>Directo a tu puerta</h4>
           <p>Envío gratis desde $500 en todo México. Entrega en 3–5 días hábiles.</p>
         </div>
 
         <div class="benefit">
-          <img class="ico" src="imgs/iconos/refresh-cw-verde.svg" alt="">
+          <img class="ico" src="/imgs/iconos/refresh-cw-verde.svg" alt="">
           <h4>Cambios sin líos</h4>
           <p>Tienes 30 días para cambiar de talla. Consulta las condiciones de devolución.</p>
         </div>
 
         <div class="benefit">
-          <img class="ico" src="imgs/iconos/ruler-verde.svg" alt="">
+          <img class="ico" src="/imgs/iconos/ruler-verde.svg" alt="">
           <h4>Encuentra tu talla</h4>
           <p>Medidas reales en cada producto para que tu próxima camiseta te quede bien.</p>
         </div>
 
         <div class="benefit">
-          <img class="ico" src="imgs/iconos/message-circle-verde.svg" alt="">
+          <img class="ico" src="/imgs/iconos/message-circle-verde.svg" alt="">
           <h4>Aquí para ayudarte</h4>
           <p>Te atendemos de lunes a viernes. Escríbenos por Instagram @kingdomjerseys.mx</p>
         </div>
@@ -199,20 +200,20 @@
           </p>
           <div class="footer-social">
             <a href="#" aria-label="Instagram">
-              <img class="ico" src="imgs/iconos/instagram-hueso.svg" alt="">
+              <img class="ico" src="/imgs/iconos/instagram-hueso.svg" alt="">
             </a>
-            <a href="#" aria-label="TikTok"><img class="ico" src="imgs/iconos/send-hueso.svg" alt=""></a>
+            <a href="#" aria-label="TikTok"><img class="ico" src="/imgs/iconos/send-hueso.svg" alt=""></a>
           </div>
         </div>
 
         <div class="footer-col">
           <h5>LA TIENDA</h5>
           <ul>
-            <li><a href="novedades.html">Novedades</a></li>
-            <li><a href="novedades.html#clubes">Camisetas de clubes</a></li>
-            <li><a href="novedades.html#selecciones">Selecciones</a></li>
-            <li><a href="novedades.html#retro">Colección retro</a></li>
-            <li><a href="novedades.html">Kingdom Studio</a></li>
+            <li><a href="/novedades">Novedades</a></li>
+            <li><a href="/novedades#clubes">Camisetas de clubes</a></li>
+            <li><a href="/novedades#selecciones">Selecciones</a></li>
+            <li><a href="/novedades#retro">Colección retro</a></li>
+            <li><a href="/novedades">Kingdom Studio</a></li>
           </ul>
         </div>
 

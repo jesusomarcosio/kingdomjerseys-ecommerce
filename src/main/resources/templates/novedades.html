@@ -7,8 +7,8 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
-    <link rel="icon" href="imgs/logo-corona.svg" type="image/svg+xml">
-    <link rel="stylesheet" href="css/styles.css">
+    <link rel="icon" href="/imgs/logo-corona.svg" type="image/svg+xml">
+    <link rel="stylesheet" href="/css/styles.css">
   </head>
   <body>
     <div class="marquee" aria-label="Avisos de la tienda">
@@ -30,39 +30,39 @@
 
     <header class="site-header">
       <nav class="site-nav">
-        <a class="logo" href="index.html">
-          <img src="imgs/logo-corona.svg" alt="">
+        <a class="logo" href="/">
+          <img src="/imgs/logo-corona.svg" alt="">
           <span>KINGDOMJERSEYS</span>
         </a>
         <input type="checkbox" id="menu-toggle" aria-label="Abrir menú">
         <ul class="nav-links">
-          <li><a href="novedades.html" class="active">Novedades</a></li>
-          <li><a href="novedades.html#clubes">Clubes</a></li>
-          <li><a href="novedades.html#selecciones">Selecciones</a></li>
-          <li><a href="novedades.html#retro">Retro</a></li>
-          <li class="only-mobile"><a href="iniciar-sesion.html">Iniciar sesión</a></li>
+          <li><a href="/novedades" class="active">Novedades</a></li>
+          <li><a href="/novedades#clubes">Clubes</a></li>
+          <li><a href="/novedades#selecciones">Selecciones</a></li>
+          <li><a href="/novedades#retro">Retro</a></li>
+          <li class="only-mobile"><a href="/iniciar-sesion">Iniciar sesión</a></li>
         </ul>
         <div class="nav-tools">
-          <form class="nav-search" action="novedades.html" method="get" role="search">
-            <img class="ico" src="imgs/iconos/search-ink.svg" alt="">
+          <form class="nav-search" action="/novedades" method="get" role="search">
+            <img class="ico" src="/imgs/iconos/search-ink.svg" alt="">
             <input type="text" name="buscar" placeholder="Busca tu equipo o camiseta" autocomplete="off">
           </form>
-          <a class="nav-icon nav-user" href="iniciar-sesion.html" aria-label="Cuenta">
-            <img class="ico" src="imgs/iconos/user-round-ink.svg" alt="">
+          <a class="nav-icon nav-user" href="/iniciar-sesion" aria-label="Cuenta">
+            <img class="ico" src="/imgs/iconos/user-round-ink.svg" alt="">
           </a>
-          <a class="nav-icon" href="carrito.html" aria-label="Carrito">
-            <img class="ico" src="imgs/iconos/shopping-bag-ink.svg" alt="">
+          <a class="nav-icon" href="/carrito" aria-label="Carrito">
+            <img class="ico" src="/imgs/iconos/shopping-bag-ink.svg" alt="">
             <span>(0)</span>
           </a>
           <label class="menu-btn" for="menu-toggle">
-            <img class="ico" src="imgs/iconos/menu-ink.svg" alt="">
+            <img class="ico" src="/imgs/iconos/menu-ink.svg" alt="">
           </label>
         </div>
       </nav>
     </header>
 
     <main>
-      <div class="breadcrumb"><a href="index.html">Inicio</a><span>/</span><span>Novedades</span></div>
+      <div class="breadcrumb"><a href="/">Inicio</a><span>/</span><span>Novedades</span></div>
       <div class="catalog-head">
         <div class="eyebrow">RECIÉN LLEGADAS</div>
         <h1>NOVEDADES.</h1>
@@ -71,7 +71,7 @@
 
       <div class="filter-bar">
         <div class="tabs">
-          <a class="active" href="novedades.html">Todas</a>
+          <a class="active" href="/novedades">Todas</a>
           <a href="#clubes">Clubes</a>
           <a href="#selecciones">Selecciones</a>
           <a href="#retro">Retro</a>
@@ -90,99 +90,99 @@
         <div class="grid-4 rows">
           <article class="card">
             <div class="card-photo">
-              <a href="#"><img src="imgs/madrid-visitante.jpg" alt="Real Madrid · Visitante"></a>
+              <a href="/producto/madrid-visitante"><img src="/imgs/madrid-visitante.jpg" alt="Real Madrid · Visitante"></a>
               <span class="badge">NUEVA</span>
               <button class="wish" type="button" aria-label="Guardar producto">
-                <img class="ico" src="imgs/iconos/heart-ink.svg" alt="">
+                <img class="ico" src="/imgs/iconos/heart-ink.svg" alt="">
               </button>
             </div>
-            <h3><a href="#">Real Madrid · Visitante</a></h3>
+            <h3><a href="/producto/madrid-visitante">Real Madrid · Visitante</a></h3>
             <p class="desc">Temporada 25/26 · Adulto · S–XXL</p>
             <p class="price">$600</p>
           </article>
 
           <article class="card">
             <div class="card-photo">
-              <a href="#"><img src="imgs/boca-local.jpg" alt="Boca Juniors · Local"></a>
+              <a href="/producto/boca-local"><img src="/imgs/boca-local.jpg" alt="Boca Juniors · Local"></a>
               <button class="wish" type="button" aria-label="Guardar producto">
-                <img class="ico" src="imgs/iconos/heart-ink.svg" alt="">
+                <img class="ico" src="/imgs/iconos/heart-ink.svg" alt="">
               </button>
             </div>
-            <h3><a href="#">Boca Juniors · Local</a></h3>
+            <h3><a href="/producto/boca-local">Boca Juniors · Local</a></h3>
             <p class="desc">Temporada 25/26 · Adulto · S–XXL</p>
             <p class="price">$600</p>
           </article>
 
           <article class="card">
             <div class="card-photo">
-              <a href="producto.html"><img src="imgs/mexico-seleccion.jpg" alt="México · Selección"></a>
+              <a href="/producto/mexico-seleccion"><img src="/imgs/mexico-seleccion.jpg" alt="México · Selección"></a>
               <span class="badge">MÁS VENDIDA</span>
               <button class="wish" type="button" aria-label="Guardar producto">
-                <img class="ico" src="imgs/iconos/heart-ink.svg" alt="">
+                <img class="ico" src="/imgs/iconos/heart-ink.svg" alt="">
               </button>
             </div>
-            <h3><a href="producto.html">México · Selección</a></h3>
+            <h3><a href="/producto/mexico-seleccion">México · Selección</a></h3>
             <p class="desc">Selecciones · Adulto · S–XXL</p>
             <p class="price">$600</p>
           </article>
 
           <article class="card">
             <div class="card-photo">
-              <a href="#"><img src="imgs/liverpool-local.jpg" alt="Liverpool · Local"></a>
+              <a href="/producto/liverpool-local"><img src="/imgs/liverpool-local.jpg" alt="Liverpool · Local"></a>
               <button class="wish" type="button" aria-label="Guardar producto">
-                <img class="ico" src="imgs/iconos/heart-ink.svg" alt="">
+                <img class="ico" src="/imgs/iconos/heart-ink.svg" alt="">
               </button>
             </div>
-            <h3><a href="#">Liverpool · Local</a></h3>
+            <h3><a href="/producto/liverpool-local">Liverpool · Local</a></h3>
             <p class="desc">Temporada 25/26 · Adulto · S–XXL</p>
             <p class="price">$600</p>
           </article>
 
           <article class="card">
             <div class="card-photo">
-              <a href="#"><img src="imgs/juventus-local.jpg" alt="Juventus · Local"></a>
+              <a href="/producto/juventus-local"><img src="/imgs/juventus-local.jpg" alt="Juventus · Local"></a>
               <button class="wish" type="button" aria-label="Guardar producto">
-                <img class="ico" src="imgs/iconos/heart-ink.svg" alt="">
+                <img class="ico" src="/imgs/iconos/heart-ink.svg" alt="">
               </button>
             </div>
-            <h3><a href="#">Juventus · Local</a></h3>
+            <h3><a href="/producto/juventus-local">Juventus · Local</a></h3>
             <p class="desc">Temporada 25/26 · Adulto · S–XXL</p>
             <p class="price">$600</p>
           </article>
 
           <article class="card">
             <div class="card-photo">
-              <a href="#"><img src="imgs/river-local.jpg" alt="River Plate · Local"></a>
+              <a href="/producto/river-local"><img src="/imgs/river-local.jpg" alt="River Plate · Local"></a>
               <span class="badge">NUEVA</span>
               <button class="wish" type="button" aria-label="Guardar producto">
-                <img class="ico" src="imgs/iconos/heart-ink.svg" alt="">
+                <img class="ico" src="/imgs/iconos/heart-ink.svg" alt="">
               </button>
             </div>
-            <h3><a href="#">River Plate · Local</a></h3>
+            <h3><a href="/producto/river-local">River Plate · Local</a></h3>
             <p class="desc">Temporada 25/26 · Adulto · S–XXL</p>
             <p class="price">$600</p>
           </article>
 
           <article class="card">
             <div class="card-photo">
-              <a href="#"><img src="imgs/alemania-seleccion.jpg" alt="Alemania · Selección"></a>
+              <a href="/producto/alemania-seleccion"><img src="/imgs/alemania-seleccion.jpg" alt="Alemania · Selección"></a>
               <button class="wish" type="button" aria-label="Guardar producto">
-                <img class="ico" src="imgs/iconos/heart-ink.svg" alt="">
+                <img class="ico" src="/imgs/iconos/heart-ink.svg" alt="">
               </button>
             </div>
-            <h3><a href="#">Alemania · Selección</a></h3>
+            <h3><a href="/producto/alemania-seleccion">Alemania · Selección</a></h3>
             <p class="desc">Selecciones · Adulto · S–XXL</p>
             <p class="price">$600</p>
           </article>
 
           <article class="card">
             <div class="card-photo">
-              <a href="#"><img src="imgs/psg-local.jpg" alt="PSG · Local"></a>
+              <a href="/producto/psg-local"><img src="/imgs/psg-local.jpg" alt="PSG · Local"></a>
               <button class="wish" type="button" aria-label="Guardar producto">
-                <img class="ico" src="imgs/iconos/heart-ink.svg" alt="">
+                <img class="ico" src="/imgs/iconos/heart-ink.svg" alt="">
               </button>
             </div>
-            <h3><a href="#">PSG · Local</a></h3>
+            <h3><a href="/producto/psg-local">PSG · Local</a></h3>
             <p class="desc">Temporada 25/26 · Adulto · S–XXL</p>
             <p class="price">$600</p>
           </article>
@@ -193,25 +193,25 @@
       <section class="benefits">
         <div class="wrap benefits-grid">
           <div class="benefit">
-            <img class="ico" src="imgs/iconos/truck-verde.svg" alt="">
+            <img class="ico" src="/imgs/iconos/truck-verde.svg" alt="">
             <h4>Directo a tu puerta</h4>
             <p>Envío gratis desde $500 en todo México. Entrega en 3–5 días hábiles.</p>
           </div>
 
           <div class="benefit">
-            <img class="ico" src="imgs/iconos/refresh-cw-verde.svg" alt="">
+            <img class="ico" src="/imgs/iconos/refresh-cw-verde.svg" alt="">
             <h4>Cambios sin líos</h4>
             <p>Tienes 30 días para cambiar de talla. Consulta las condiciones de devolución.</p>
           </div>
 
           <div class="benefit">
-            <img class="ico" src="imgs/iconos/ruler-verde.svg" alt="">
+            <img class="ico" src="/imgs/iconos/ruler-verde.svg" alt="">
             <h4>Encuentra tu talla</h4>
             <p>Medidas reales en cada producto para que tu próxima camiseta te quede bien.</p>
           </div>
 
           <div class="benefit">
-            <img class="ico" src="imgs/iconos/message-circle-verde.svg" alt="">
+            <img class="ico" src="/imgs/iconos/message-circle-verde.svg" alt="">
             <h4>Aquí para ayudarte</h4>
             <p>Te atendemos de lunes a viernes. Escríbenos por Instagram @kingdomjerseys.mx</p>
           </div>
@@ -227,7 +227,7 @@
 
         <a class="btn btn-light" href="#">
           Síguenos en Instagram
-          <img class="ico" src="imgs/iconos/arrow-right-oscuro.svg" alt="">
+          <img class="ico" src="/imgs/iconos/arrow-right-oscuro.svg" alt="">
         </a>
       </section>
     </main>
@@ -242,20 +242,20 @@
           </p>
           <div class="footer-social">
             <a href="#" aria-label="Instagram">
-              <img class="ico" src="imgs/iconos/instagram-hueso.svg" alt="">
+              <img class="ico" src="/imgs/iconos/instagram-hueso.svg" alt="">
             </a>
-            <a href="#" aria-label="TikTok"><img class="ico" src="imgs/iconos/send-hueso.svg" alt=""></a>
+            <a href="#" aria-label="TikTok"><img class="ico" src="/imgs/iconos/send-hueso.svg" alt=""></a>
           </div>
         </div>
 
         <div class="footer-col">
           <h5>LA TIENDA</h5>
           <ul>
-            <li><a href="novedades.html">Novedades</a></li>
-            <li><a href="novedades.html#clubes">Camisetas de clubes</a></li>
-            <li><a href="novedades.html#selecciones">Selecciones</a></li>
-            <li><a href="novedades.html#retro">Colección retro</a></li>
-            <li><a href="novedades.html">Kingdom Studio</a></li>
+            <li><a href="/novedades">Novedades</a></li>
+            <li><a href="/novedades#clubes">Camisetas de clubes</a></li>
+            <li><a href="/novedades#selecciones">Selecciones</a></li>
+            <li><a href="/novedades#retro">Colección retro</a></li>
+            <li><a href="/novedades">Kingdom Studio</a></li>
           </ul>
         </div>
 

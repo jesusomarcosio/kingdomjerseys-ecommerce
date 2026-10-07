@@ -20,10 +20,10 @@ var campoBusqueda = document.querySelector(".nav-search input");
 // para que buscar "mexico" también encuentre "México".
 function normalizar(texto) {
   return texto
-    .toLowerCase()
-    .normalize("NFD")
-    .replace(/[\u0300-\u036f]/g, "")
-    .trim();
+      .toLowerCase()
+      .normalize("NFD")
+      .replace(/[\u0300-\u036f]/g, "")
+      .trim();
 }
 
 
@@ -51,7 +51,7 @@ function aplicarFiltros() {
     var nombre = normalizar(tarjeta.querySelector("h3").textContent);
 
     var coincideCategoria =
-      filtros.categoria === "todas" || tarjeta.dataset.categoria === filtros.categoria;
+        filtros.categoria === "todas" || tarjeta.dataset.categoria === filtros.categoria;
     var coincideTexto = textoBuscado === "" || nombre.indexOf(textoBuscado) !== -1;
 
     var mostrar = coincideCategoria && coincideTexto;
