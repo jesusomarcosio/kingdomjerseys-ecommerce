@@ -2,204 +2,410 @@
 <html lang="es">
   <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-    <title>KingdomJerseys — El fútbol se lleva puesto</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>KingdomJerseys — Viste como rey</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="/css/styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+    <link rel="icon" href="imgs/logo-corona.svg" type="image/svg+xml">
+    <link rel="stylesheet" href="css/styles.css">
   </head>
   <body>
-
-    <div class="promo">TU PRÓXIMA CAMISETA, MÁS CERCA. ENVÍO GRATIS DESDE 500$</div>
-    <nav class="site-nav">
-      <a class="logo" href="/index"><span class="bar"></span>KINGDOMJERSEYS</a>
-      <ul class="nav-links">
-        <li><a href="/novedades">Novedades</a></li>
-        <li><a href="/novedades?categoria=clubes">Clubes</a></li>
-        <li><a href="/novedades?categoria=selecciones">Selecciones</a></li>
-        <li><a href="/novedades?categoria=retro">Retro</a></li>
-      </ul>
-      <form class="nav-search" action="/novedades" method="get" role="search">
-        <svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3"/></svg>
-        <input type="text" name="buscar" placeholder="Busca tu equipo o camiseta" autocomplete="off">
-      </form>
-      <div class="nav-tools">
-        <a href="/iniciar-sesion" aria-label="Cuenta">
-          <svg viewBox="0 0 24 24"><path d="M20 21a8 8 0 1 0-16 0"/><circle cx="12" cy="7" r="4"/></svg>
-        </a>
-      </div>
-    </nav>
-
-    <div class="hero">
-      <div class="hero-left">
-        <div>
-          <div class="hero-badge"><span class="dot"></span>NUEVA COLECCIÓN / 25—26</div>
-          <h1>EL FÚTBOL<br>SE LLEVA<br>PUESTO.</h1>
-          <p>De la grada a la calle. Camisetas para quienes viven cada partido, dentro y fuera del campo.</p>
-          <a href="/novedades" class="btn btn-primary">Explorar la colección ↗</a>
-        </div>
-        <div class="hero-foot"><span>ELIGE TUS COLORES. VIVE TU PASIÓN.</span><span>VOL. 01</span></div>
-      </div>
-      <div class="hero-right">
-        <div class="ph-scene"><span class="ph-note">Fotografía de campaña — por colocar</span></div>
-        <div class="hero-card">
-          <div class="eyebrow">KINGDOM ESTUDIO</div>
-          <h4>TU NUEVO UNIFORME.<svg viewBox="0 0 24 24"><path d="M7 17 17 7M7 7h10v10"/></svg></h4>
-          <p>Colección Cancha · desde 500$</p>
-        </div>
+    <div class="marquee" aria-label="Avisos de la tienda">
+      <div class="marquee-track">
+        <span>ENVÍOS A TODO MÉXICO</span>
+        <span class="dot">●</span>
+        <span>TEMPORADA 25/26 YA DISPONIBLE</span>
+        <span class="dot">●</span>
+        <span>PAGA CONTRA ENTREGA</span>
+        <span class="dot">●</span>
+        <span>ENVÍO GRATIS DESDE $500</span>
+        <span class="dot">●</span>
+        <span>ENVÍOS A TODO MÉXICO</span>
+        <span class="dot">●</span>
+        <span>TEMPORADA 25/26 YA DISPONIBLE</span>
+        <span class="dot">●</span>
+        <span>PAGA CONTRA ENTREGA</span>
+        <span class="dot">●</span>
+        <span>ENVÍO GRATIS DESDE $500</span>
+        <span class="dot">●</span>
+        <span>ENVÍOS A TODO MÉXICO</span>
+        <span class="dot">●</span>
+        <span>TEMPORADA 25/26 YA DISPONIBLE</span>
+        <span class="dot">●</span>
+        <span>PAGA CONTRA ENTREGA</span>
+        <span class="dot">●</span>
+        <span>ENVÍO GRATIS DESDE $500</span>
+        <span class="dot">●</span>
+        <span>ENVÍOS A TODO MÉXICO</span>
+        <span class="dot">●</span>
+        <span>TEMPORADA 25/26 YA DISPONIBLE</span>
+        <span class="dot">●</span>
+        <span>PAGA CONTRA ENTREGA</span>
+        <span class="dot">●</span>
+        <span>ENVÍO GRATIS DESDE $500</span>
+        <span class="dot">●</span>
       </div>
     </div>
+
+    <header class="site-header">
+      <nav class="site-nav">
+        <a class="logo" href="index.html">
+          <img src="imgs/logo-corona.svg" alt="">
+          <span>KINGDOMJERSEYS</span>
+        </a>
+        <input type="checkbox" id="menu-toggle" aria-label="Abrir menú">
+        <ul class="nav-links">
+          <li><a href="novedades.html">Novedades</a></li>
+          <li><a href="novedades.html#clubes">Clubes</a></li>
+          <li><a href="novedades.html#selecciones">Selecciones</a></li>
+          <li><a href="novedades.html#retro">Retro</a></li>
+          <li class="only-mobile"><a href="iniciar-sesion.html">Iniciar sesión</a></li>
+        </ul>
+        <div class="nav-tools">
+          <form class="nav-search" action="novedades.html" method="get" role="search">
+            <img class="ico" src="imgs/iconos/search-ink.svg" alt="">
+            <input type="text" name="buscar" placeholder="Busca tu equipo o camiseta" autocomplete="off">
+          </form>
+          <a class="nav-icon nav-user" href="iniciar-sesion.html" aria-label="Cuenta">
+            <img class="ico" src="imgs/iconos/user-round-ink.svg" alt="">
+          </a>
+          <a class="nav-icon" href="carrito.html" aria-label="Carrito">
+            <img class="ico" src="imgs/iconos/shopping-bag-ink.svg" alt="">
+            <span>(0)</span>
+          </a>
+          <label class="menu-btn" for="menu-toggle">
+            <img class="ico" src="imgs/iconos/menu-ink.svg" alt="">
+          </label>
+        </div>
+      </nav>
+    </header>
 
     <main>
-      <div class="section-head">
-        <div><div class="eyebrow">CADA AFICIÓN TIENE SU CAMISETA</div><h2>Encuentra tus colores.</h2></div>
-      </div>
-      <div class="grid-3">
-        <a class="category-card" href="/novedades?categoria=clubes">
-          <div class="ph-scene"></div>
-          <div class="info"><div><h3>Clubes</h3><p>Los colores de cada domingo</p></div><svg class="arrow" viewBox="0 0 24 24"><path d="M7 17 17 7M7 7h10v10"/></svg></div>
-        </a>
-        <a class="category-card" href="/novedades?categoria=selecciones">
-          <div class="ph-scene"></div>
-          <div class="info"><div><h3>Selecciones</h3><p>Una pasión que cruza fronteras</p></div><svg class="arrow" viewBox="0 0 24 24"><path d="M7 17 17 7M7 7h10v10"/></svg></div>
-        </a>
-        <a class="category-card" href="/novedades?categoria=retro">
-          <div class="ph-scene"></div>
-          <div class="info"><div><h3>Clásicos</h3><p>El fútbol que nunca pasa de moda</p></div><svg class="arrow" viewBox="0 0 24 24"><path d="M7 17 17 7M7 7h10v10"/></svg></div>
-        </a>
-      </div>
+      <section class="hero">
+        <div class="hero-copy">
+          <div>
+            <div class="hero-badge"><i></i>NUEVA COLECCIÓN / 25—26</div>
+            <h1>VISTE<br>COMO<br><em>REY.</em></h1>
+            <p>De la grada a la calle. Camisetas para quienes viven cada partido, dentro y fuera del campo.</p>
+            <a class="btn btn-primary" href="novedades.html">
+              Explorar la colección
+              <img class="ico" src="imgs/iconos/arrow-up-right-blanco.svg" alt="">
+            </a>
+          </div>
+          <div class="hero-foot"><span>ELIGE TUS COLORES. VIVE TU PASIÓN.</span><span>VOL. 01</span></div>
+        </div>
 
-      <div class="section-head">
-        <div><div class="eyebrow">LOS IMPRESCINDIBLES DE LA GRADA</div><h2>Titulares indiscutibles.</h2></div>
-        <a class="cta" href="/novedades">Ver todas las camisetas<svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
-      </div>
-      <div class="tabs">
-        <a href="/novedades" class="active">Destacadas</a>
-        <a href="/novedades?categoria=clubes">Clubes</a>
-        <a href="/novedades?categoria=selecciones">Selecciones</a>
-      </div>
-      <div class="grid-4">
-            <div class="card">
-          <div class="ph-product">
-            <svg viewBox="0 0 120 130" fill="none" stroke="#151A17" stroke-width="2"><path d="M35 10 L10 25 L18 45 L30 38 V118 H90 V38 L102 45 L110 25 L85 10 Q75 22 60 22 Q45 22 35 10 Z"/></svg>
-          </div>
-          <h3>Madrid · Camiseta local</h3>
-          <p class="desc">Temporada 25/26 · Adulto · S–XXL</p>
-          <p class="price">600$</p>
+        <div class="hero-photo">
+          <img src="imgs/hero-campana.jpg" alt="Camiseta verde Kingdom Studio en la cancha">
+          <a class="hero-note" href="novedades.html">
+            <div>
+              <small>KINGDOM ESTUDIO</small>
+              <strong>TU NUEVO UNIFORME.</strong>
+              <span>Colección Cancha · desde $500</span>
+            </div>
+            <img class="ico" src="imgs/iconos/arrow-up-right-ink.svg" alt="">
+          </a>
+          <div class="hero-dots"><i></i><i></i><i></i></div>
         </div>
-        <div class="card">
-          <div class="ph-product">
-            <span class="badge">FAVORITA</span>
-            <svg viewBox="0 0 120 130" fill="none" stroke="#151A17" stroke-width="2"><path d="M35 10 L10 25 L18 45 L30 38 V118 H90 V38 L102 45 L110 25 L85 10 Q75 22 60 22 Q45 22 35 10 Z"/></svg>
+      </section>
+
+      <!-- Categorias-->
+      <section class="section">
+        <div class="wrap">
+          <div class="section-head">
+            <div>
+              <div class="eyebrow">CADA AFICIÓN TIENE SU CAMISETA</div>
+              <h2>Encuentra tus colores.</h2>
+            </div>
           </div>
-          <h3>Barcelona · Camiseta local</h3>
-          <p class="desc">Temporada 25/26 · Adulto · S–XXL</p>
-          <p class="price">600$</p>
-        </div>
-        <div class="card">
-          <div class="ph-product">
-            <span class="badge">MÁS VENDIDA</span>
-            <svg viewBox="0 0 120 130" fill="none" stroke="#151A17" stroke-width="2"><path d="M35 10 L10 25 L18 45 L30 38 V118 H90 V38 L102 45 L110 25 L85 10 Q75 22 60 22 Q45 22 35 10 Z"/></svg>
+          <div class="grid-3">
+            <a class="category-card" href="novedades.html#clubes">
+              <img src="imgs/cat-clubes.jpg" alt="Clubes">
+              <div class="info">
+                <div>
+                  <h3>Clubes</h3>
+                  <p>Los colores de cada domingo</p>
+                </div>
+                <img class="ico" src="imgs/iconos/arrow-up-right-blanco.svg" alt="">
+              </div>
+            </a>
+
+            <a class="category-card" href="novedades.html#selecciones">
+              <img src="imgs/cat-selecciones.jpg" alt="Selecciones">
+              <div class="info">
+                <div>
+                  <h3>Selecciones</h3>
+                  <p>Una pasión que cruza fronteras</p>
+                </div>
+                <img class="ico" src="imgs/iconos/arrow-up-right-blanco.svg" alt="">
+              </div>
+            </a>
+
+            <a class="category-card" href="novedades.html#retro">
+              <img src="imgs/cat-clasicos.jpg" alt="Clásicos">
+              <div class="info">
+                <div>
+                  <h3>Clásicos</h3>
+                  <p>El fútbol que nunca pasa de moda</p>
+                </div>
+                <img class="ico" src="imgs/iconos/arrow-up-right-blanco.svg" alt="">
+              </div>
+            </a>
           </div>
-          <h3>Argentina</h3>
-          <p class="desc">Selecciones · Adulto · S–XXL</p>
-          <p class="price">600$</p>
         </div>
-        <div class="card">
-          <div class="ph-product">
-            <svg viewBox="0 0 120 130" fill="none" stroke="#151A17" stroke-width="2"><path d="M35 10 L10 25 L18 45 L30 38 V118 H90 V38 L102 45 L110 25 L85 10 Q75 22 60 22 Q45 22 35 10 Z"/></svg>
+      </section>
+
+      <!-- Destacadas-->
+      <section class="section" style="padding-top:8px">
+        <div class="wrap">
+          <div class="section-head">
+            <div>
+              <div class="eyebrow">LOS IMPRESCINDIBLES DE LA GRADA</div>
+              <h2>Titulares indiscutibles.</h2>
+            </div>
+            <a class="link-arrow" href="novedades.html">
+              Ver todas las camisetas
+              <img class="ico" src="imgs/iconos/arrow-right-ink.svg" alt="">
+            </a>
           </div>
-          <h3>Brasil</h3>
-          <p class="desc">Selecciones · Adulto · S–XXL</p>
-          <p class="price">600$</p>
+          <div class="tabs">
+            <a class="active" href="#">Destacadas</a>
+            <a href="novedades.html#clubes">Clubes</a>
+            <a href="novedades.html#selecciones">Selecciones</a>
+          </div>
+          <div class="grid-4">
+            <article class="card">
+              <div class="card-photo">
+                <a href="#"><img src="imgs/madrid-local.jpg" alt="Madrid · Camiseta local"></a>
+                <button class="wish" type="button" aria-label="Guardar producto">
+                  <img class="ico" src="imgs/iconos/heart-ink.svg" alt="">
+                </button>
+              </div>
+              <h3><a href="#">Madrid · Camiseta local</a></h3>
+              <p class="desc">Temporada 25/26 · Adulto · S–XXL</p>
+              <p class="price">$600</p>
+            </article>
+
+            <article class="card">
+              <div class="card-photo">
+                <a href="#"><img src="imgs/barcelona-local.jpg" alt="Barcelona · Camiseta local"></a>
+                <span class="badge">FAVORITA</span>
+                <button class="wish" type="button" aria-label="Guardar producto">
+                  <img class="ico" src="imgs/iconos/heart-ink.svg" alt="">
+                </button>
+              </div>
+              <h3><a href="#">Barcelona · Camiseta local</a></h3>
+              <p class="desc">Temporada 25/26 · Adulto · S–XXL</p>
+              <p class="price">$600</p>
+            </article>
+
+            <article class="card">
+              <div class="card-photo">
+                <a href="#"><img src="imgs/argentina.jpg" alt="Argentina"></a>
+                <span class="badge">MÁS VENDIDA</span>
+                <button class="wish" type="button" aria-label="Guardar producto">
+                  <img class="ico" src="imgs/iconos/heart-ink.svg" alt="">
+                </button>
+              </div>
+              <h3><a href="#">Argentina</a></h3>
+              <p class="desc">Selecciones · Adulto · S–XXL</p>
+              <p class="price">$600</p>
+            </article>
+
+            <article class="card">
+              <div class="card-photo">
+                <a href="#"><img src="imgs/brasil.jpg" alt="Brasil"></a>
+                <button class="wish" type="button" aria-label="Guardar producto">
+                  <img class="ico" src="imgs/iconos/heart-ink.svg" alt="">
+                </button>
+              </div>
+              <h3><a href="#">Brasil</a></h3>
+              <p class="desc">Selecciones · Adulto · S–XXL</p>
+              <p class="price">$600</p>
+            </article>
+          </div>
         </div>
-      </div>
+      </section>
+
+      <!-- Novedades-->
+      <section class="section bg-photo">
+        <div class="wrap split-new">
+          <div>
+            <div class="eyebrow">RECIÉN LLEGADAS</div>
+            <h2>NUEVA CANCHA.<br>MISMA PASIÓN.</h2>
+            <p>
+              Nuestra propia forma de vivir el fútbol. Dos nuevos diseños, detalles de otra época y actitud de hoy.
+            </p>
+            <a class="btn btn-primary" href="novedades.html">
+              Descubrir novedades
+              <img class="ico" src="imgs/iconos/arrow-up-right-blanco.svg" alt="">
+            </a>
+            <div class="note-rule">DISEÑO PROPIO. ESPÍRITU DE EQUIPO.</div>
+          </div>
+          <div class="grid-2">
+            <article class="card">
+              <div class="card-photo">
+                <a href="#"><img src="imgs/cancha-verde.jpg" alt="Cancha · Verde tribuna"></a>
+                <span class="badge">NUEVA</span>
+                <button class="wish" type="button" aria-label="Guardar producto">
+                  <img class="ico" src="imgs/iconos/heart-ink.svg" alt="">
+                </button>
+              </div>
+              <h3><a href="#">Cancha · Verde tribuna</a></h3>
+              <p class="desc">Kingdom Studio · Corte relajado · S–XXL</p>
+              <p class="price">$500</p>
+            </article>
+
+            <article class="card">
+              <div class="card-photo">
+                <a href="#"><img src="imgs/cancha-hueso.jpg" alt="Cancha · Hueso y verde"></a>
+                <span class="badge">NUEVA</span>
+                <button class="wish" type="button" aria-label="Guardar producto">
+                  <img class="ico" src="imgs/iconos/heart-ink.svg" alt="">
+                </button>
+              </div>
+              <h3><a href="#">Cancha · Hueso y verde</a></h3>
+              <p class="desc">Kingdom Studio · Corte relajado · S–XXL</p>
+              <p class="price">$500</p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <!-- Retro-->
+      <section class="retro">
+        <div class="retro-photo">
+          <img src="imgs/retro-banca.jpg" alt="Camisetas retro sobre una banca de vestuario">
+          <span class="chip">KINGDOMJERSEYS / INSPIRACIÓN 90s</span>
+        </div>
+
+        <div class="retro-copy">
+          <div class="eyebrow">EL PASADO SIGUE JUGANDO</div>
+          <h2>NO ES NOSTALGIA.<br>ES HISTORIA.</h2>
+          <p>
+            Cuellos de los noventa. Patrones que marcaron una era. Redescubre los diseños que hicieron del fútbol algo inolvidable.
+          </p>
+          <div class="retro-price">Camisetas retro desde <b>$500</b></div>
+          <a class="btn btn-light" href="novedades.html#retro">
+            Explorar los clásicos
+            <img class="ico" src="imgs/iconos/arrow-up-right-oscuro.svg" alt="">
+          </a>
+        </div>
+      </section>
+
+      <!-- Cultura-->
+      <section class="culture">
+        <div>
+          <div class="eyebrow">MÁS QUE NOVENTA MINUTOS</div>
+          <h2>LA CAMISETA NO SE ELIGE.<br>SE SIENTE.</h2>
+          <p>
+            La del primer partido. La de aquel gol en el último minuto. La que llevas aunque no haya fútbol. En kingdomjerseys reunimos camisetas con algo en común: una historia que quieres hacer tuya.
+          </p>
+          <a class="link-arrow" href="#">
+            Conoce Kingdomjerseys
+            <img class="ico" src="imgs/iconos/arrow-right-ink.svg" alt="">
+          </a>
+        </div>
+
+        <div class="culture-photo">
+          <img src="imgs/cultura-barrio.jpg" alt="Tres amigos viendo un partido en la cancha del barrio">
+          <span>EN CUALQUIER CANCHA. EN CUALQUIER BARRIO.</span>
+        </div>
+      </section>
+
+      <section class="benefits">
+        <div class="wrap benefits-grid">
+          <div class="benefit">
+            <img class="ico" src="imgs/iconos/truck-verde.svg" alt="">
+            <h4>Directo a tu puerta</h4>
+            <p>Envío gratis desde $500 en todo México. Entrega en 3–5 días hábiles.</p>
+          </div>
+
+          <div class="benefit">
+            <img class="ico" src="imgs/iconos/refresh-cw-verde.svg" alt="">
+            <h4>Cambios sin líos</h4>
+            <p>Tienes 30 días para cambiar de talla. Consulta las condiciones de devolución.</p>
+          </div>
+
+          <div class="benefit">
+            <img class="ico" src="imgs/iconos/ruler-verde.svg" alt="">
+            <h4>Encuentra tu talla</h4>
+            <p>Medidas reales en cada producto para que tu próxima camiseta te quede bien.</p>
+          </div>
+
+          <div class="benefit">
+            <img class="ico" src="imgs/iconos/message-circle-verde.svg" alt="">
+            <h4>Aquí para ayudarte</h4>
+            <p>Te atendemos de lunes a viernes. Escríbenos por Instagram @kingdomjerseys.mx</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- Instagram-->
+      <section class="section">
+        <div class="wrap">
+          <div class="section-head">
+            <div>
+              <div class="eyebrow">SÍGUENOS EN INSTAGRAM</div>
+              <h2>@kingdomjerseys.mx</h2>
+            </div>
+            <a class="link-arrow" href="#" style="color:var(--green)">
+              VER EN INSTAGRAM
+              <img class="ico" src="imgs/iconos/arrow-up-right-verde.svg" alt="">
+            </a>
+          </div>
+          <div class="insta-grid">
+            <a href="#"><img src="imgs/cancha-hueso.jpg" alt="Publicación de Instagram"></a>
+            <a href="#"><img src="imgs/barcelona-local.jpg" alt="Publicación de Instagram"></a>
+            <a href="#"><img src="imgs/argentina.jpg" alt="Publicación de Instagram"></a>
+            <a href="#"><img src="imgs/brasil.jpg" alt="Publicación de Instagram"></a>
+            <a href="#"><img src="imgs/cancha-verde.jpg" alt="Publicación de Instagram"></a>
+          </div>
+        </div>
+      </section>
+
+      <section class="newsletter">
+        <div>
+          <div class="eyebrow">EL MEJOR FICHAJE ES ESTAR DENTRO</div>
+          <h3>ÚNETE A KINGDOMJERSEYS.</h3>
+          <p>Nuevos lanzamientos, clásicos y fútbol. Sin ruido de más.</p>
+        </div>
+
+        <a class="btn btn-light" href="#">
+          Síguenos en Instagram
+          <img class="ico" src="imgs/iconos/arrow-right-oscuro.svg" alt="">
+        </a>
+      </section>
     </main>
-
-    <div class="split" style="background:var(--line)">
-      <div>
-        <div class="eyebrow">RECIÉN LLEGADAS / TRIBUNA STUDIO</div>
-        <h2>Nueva cancha. Misma pasión.</h2>
-        <p>Nuestra propia forma de vivir el fútbol. Dos nuevos diseños, detalles de otra época y actitud de hoy.</p>
-        <a href="/novedades?categoria=tribuna" class="btn btn-primary">Descubrir novedades ↗</a>
-        <div class="split-note" style="margin-top:24px"><span class="rule"></span>DISEÑO PROPIO. ESPÍRITU DE EQUIPO.</div>
-      </div>
-      <div class="grid-4" style="grid-template-columns:1fr 1fr;padding-bottom:0">
-        <div class="card"><div class="ph-product" style="position:relative"><span class="badge">NUEVA</span><svg viewBox="0 0 120 130" fill="none" stroke="#151A17" stroke-width="2"><path d="M35 10 L10 25 L18 45 L30 38 V118 H90 V38 L102 45 L110 25 L85 10 Q75 22 60 22 Q45 22 35 10 Z"/></svg></div><h3>Cancha · Verde tribuna</h3><p class="desc">kingdom Studio · Corte relajado · S–XXL</p><p class="price">500$</p></div>
-        <div class="card"><div class="ph-product" style="position:relative"><span class="badge">NUEVA</span><svg viewBox="0 0 120 130" fill="none" stroke="#151A17" stroke-width="2"><path d="M35 10 L10 25 L18 45 L30 38 V118 H90 V38 L102 45 L110 25 L85 10 Q75 22 60 22 Q45 22 35 10 Z"/></svg></div><h3>Cancha · Hueso y verde</h3><p class="desc">kingdom Studio · Corte relajado · S–XXL</p><p class="price">500$</p></div>
-      </div>
-    </div>
-
-    <div class="split dark">
-      <div class="ph-scene dark"><span class="ph-note">Bodegón retro — por colocar</span></div>
-      <div>
-        <div class="eyebrow">KINGDOMJERSEYS / INSPIRACIÓN 90s</div>
-        <h2>No es nostalgia.<br>Es historia.</h2>
-        <p>Cuellos de los noventa. Patrones que marcan una era. Redescubre los diseños que hicieron del fútbol algo inolvidable.</p>
-        <p style="color:#fff;font-weight:600;margin-bottom:24px">Camisetas retro desde $500</p>
-        <a href="/novedades?categoria=retro" class="btn btn-primary">Explorar los clásicos ↗</a>
-      </div>
-    </div>
-
-    <div class="split">
-      <div>
-        <div class="eyebrow">MÁS QUE NOVENTA MINUTOS</div>
-        <h2>La camiseta no se elige.<br>Se siente.</h2>
-        <p>La del primer partido. La de aquel gol en el último minuto. La que llevas aunque no haya fútbol. En kingdomjerseys reunimos camisetas con algo en común: una historia que quieres hacer tuya.</p>
-      </div>
-      <div class="ph-scene"><span class="ph-note">EN CUALQUIER CANCHA, EN CUALQUIER BARRIO.</span></div>
-    </div>
-
-    <div class="benefits">
-      <div class="benefits-grid">
-        <div class="benefit">
-          <svg viewBox="0 0 24 24"><path d="M14 18V6a1 1 0 0 0-1-1H3a1 1 0 0 0-1 1v11a1 1 0 0 0 1 1h1"/><path d="M14 9h4l4 4v4a1 1 0 0 1-1 1h-1"/><circle cx="7" cy="18" r="2"/><circle cx="17" cy="18" r="2"/></svg>
-          <h4>Directo a tu puerta</h4>
-          <p>Envío gratis desde 90 € en España peninsular. Entrega en 3–5 días laborales.</p>
-        </div>
-        <div class="benefit">
-          <svg viewBox="0 0 24 24"><path d="M3 12a9 9 0 0 1 15-6.7L21 8"/><path d="M21 3v5h-5"/><path d="M21 12a9 9 0 0 1-15 6.7L3 16"/><path d="M3 21v-5h5"/></svg>
-          <h4>Cambios sin líos</h4>
-          <p>Tienes 30 días para cambiar de talla. Consulta las condiciones de devolución.</p>
-        </div>
-        <div class="benefit">
-          <svg viewBox="0 0 24 24"><path d="M3 7h18M3 12h12M3 17h6"/></svg>
-          <h4>Encuentra tu talla</h4>
-          <p>Medidas reales en cada producto para que tu próxima camiseta te quede bien.</p>
-        </div>
-        <div class="benefit">
-          <svg viewBox="0 0 24 24"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
-          <h4>Aquí para ayudarte</h4>
-          <p>Te atendemos de lunes a viernes. Escríbenos a kingdomjerseys.mx</p>
-        </div>
-      </div>
-    </div>
-
-    <div class="newsletter">
-      <div>
-        <div class="eyebrow">EL MEJOR FICHAJE ES ESTAR DENTRO</div>
-        <h3>ÚNETE A KINGDOMJERSEYS.</h3>
-        <p>Nuevos lanzamientos, clásicos y fútbol. Sin ruido de más.</p>
-      </div>
-      <button class="btn btn-primary" type="button">Síguenos en Instagram</button>
-    </div>
 
     <footer>
       <div class="footer-top">
         <div>
           <p class="footer-brand">KINGDOMJERSEYS</p>
-          <p class="footer-tag">Fútbol en la piel. Historia en cada hilo. Tienda independiente de camisetas y diseños inspirados en la cultura del fútbol. Sin afiliación oficial con clubes o selecciones.</p>
+          <p class="footer-tag">Fútbol en la piel. Historia en cada hilo.</p>
+          <p class="footer-note">
+            Tienda independiente de camisetas y diseños inspirados en la cultura del fútbol. Sin afiliación oficial con clubes o selecciones.
+          </p>
+          <div class="footer-social">
+            <a href="#" aria-label="Instagram">
+              <img class="ico" src="imgs/iconos/instagram-hueso.svg" alt="">
+            </a>
+            <a href="#" aria-label="TikTok"><img class="ico" src="imgs/iconos/send-hueso.svg" alt=""></a>
+          </div>
         </div>
+
         <div class="footer-col">
           <h5>LA TIENDA</h5>
           <ul>
-            <li><a href="/novedades">Novedades</a></li>
-            <li><a href="/novedades?categoria=clubes">Camisetas de clubes</a></li>
-            <li><a href="/novedades?categoria=selecciones">Selecciones</a></li>
-            <li><a href="/novedades?categoria=retro">Colección retro</a></li>
+            <li><a href="novedades.html">Novedades</a></li>
+            <li><a href="novedades.html#clubes">Camisetas de clubes</a></li>
+            <li><a href="novedades.html#selecciones">Selecciones</a></li>
+            <li><a href="novedades.html#retro">Colección retro</a></li>
+            <li><a href="novedades.html">Kingdom Studio</a></li>
           </ul>
         </div>
+
         <div class="footer-col">
           <h5>TE AYUDAMOS</h5>
           <ul>
@@ -210,6 +416,7 @@
             <li><a href="#">Contacto</a></li>
           </ul>
         </div>
+
         <div class="footer-col">
           <h5>KINGDOMJERSEYS</h5>
           <ul>
@@ -219,12 +426,16 @@
           </ul>
         </div>
       </div>
+
       <div class="footer-bottom">
         <span>© 2026 kingdomjerseys. Todos los precios incluyen IVA.</span>
-        <span>Privacidad · Cookies · Condiciones de compra</span>
+        <nav>
+          <a href="#">Privacidad</a>
+          <a href="#">Cookies</a>
+          <a href="#">Condiciones de compra</a>
+        </nav>
         <span>México / MX $</span>
       </div>
     </footer>
-
   </body>
 </html>
