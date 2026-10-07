@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="es">
+
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>KingdomJerseys — Tu carrito</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+
+    <link rel="icon" href="/imgs/logo-corona.svg" type="image/svg+xml">
+    <link rel="stylesheet" href="/css/styles.css">
+  </head>
+
+  <body>
+
+  <div class="promo">
+    ENVÍOS A TODO MÉXICO · ENVÍO GRATIS DESDE $500
+  </div>
+
+  <header class="site-header">
+
+    <nav class="site-nav">
+
+      <a class="logo" href="/index">
+        <img src="/imgs/logo-corona.svg" alt="">
+        <span>KINGDOMJERSEYS</span>
+      </a>
+
+      <input type="checkbox" id="menu-toggle" aria-label="Abrir menú">
+
+      <ul class="nav-links">
+        <li><a href="/novedades" class="active">Novedades</a></li>
+        <li><a href="/novedades?categoria=clubes">Clubes</a></li>
+        <li><a href="/novedades?categoria=selecciones">Selecciones</a></li>
+        <li><a href="/novedades?categoria=retro">Retro</a></li>
+        <li class="only-mobile"><a href="/iniciar-sesion">Iniciar sesión</a></li>
+      </ul>
+
+      <div class="nav-tools">
+
+        <form class="nav-search" action="/novedades" method="get" role="search">
+          <img class="ico" src="/imgs/iconos/search-ink.svg" alt="">
+          <input type="text" name="buscar" placeholder="Busca tu equipo o camiseta" autocomplete="off">
+        </form>
+
+        <a class="nav-icon nav-user" href="/iniciar-sesion" aria-label="Cuenta">
+          <img class="ico" src="/imgs/iconos/user-round-ink.svg" alt="">
+        </a>
+
+        <a class="nav-icon" href="/carrito" aria-label="Carrito">
+          <img class="ico" src="/imgs/iconos/shopping-bag-ink.svg" alt="">
+          <span>(0)</span>
+        </a>
+
+        <label class="menu-btn" for="menu-toggle">
+          <img class="ico" src="/imgs/iconos/menu-ink.svg" alt="">
+        </label>
+
+      </div>
+
+    </nav>
+
+  </header>
+
+  <main class="cart">
+
+    <h1>Tu carrito</h1>
+
+    <a class="link-green" href="/novedades">Volver a comprar</a>
+
+    <div class="cart-table">
+
+      <div class="cart-head">
+        <span>Producto</span>
+        <span>Precio</span>
+        <span>Cantidad</span>
+        <span>Total</span>
+      </div>
+
+      <div class="cart-row">
+
+        <div class="cart-prod">
+
+          <img src="/imgs/mexico-local.jpg" alt="Camiseta México Selección">
+
+          <div>
+            <h3>México - Selección</h3>
+            <a class="link-green" href="#">Remover</a>
+          </div>
+
+        </div>
+
+        <span class="cart-price">$600</span>
+
+        <div class="qty">
+          <button type="button" aria-label="Más">+</button>
+          <span>1</span>
+          <button type="button" aria-label="Menos">-</button>
+        </div>
+
+        <span class="cart-total">$600</span>
+
+      </div>
+
+    </div>
+
+    <div class="cart-foot">
+
+      <div class="cart-sub">
+
+        <p>
+          <strong>Subtotal</strong>
+          <span>$600</span>
+        </p>
+
+        <small>
+          Los costos de envío se calcularán después.
+        </small>
+
+      </div>
+
+      <a class="btn btn-primary" href="/datos">
+        Finalizar compra
+      </a>
+
+    </div>
+
+  </main>
+
+  <section class="benefits">
+
+    <div class="wrap benefits-grid">
+
+      <div class="benefit">
+        <img class="ico" src="/imgs/iconos/truck-verde.svg" alt="">
+        <h4>Envíos a todo México</h4>
+        <p>Envío gratis en compras desde $500.</p>
+      </div>
+
+      <div class="benefit">
+        <img class="ico" src="/imgs/iconos/refresh-cw-verde.svg" alt="">
+        <h4>Cambios y devoluciones</h4>
+        <p>Tienes 30 días para realizar cambios de talla.</p>
+      </div>
+
+      <div class="benefit">
+        <img class="ico" src="/imgs/iconos/ruler-verde.svg" alt="">
+        <h4>Encuentra tu talla</h4>
+        <p>Consulta las medidas de cada producto antes de realizar tu compra.</p>
+      </div>
+
+      <div class="benefit">
+        <img class="ico" src="/imgs/iconos/message-circle-verde.svg" alt="">
+        <h4>Atención al cliente</h4>
+        <p>Contáctanos por Instagram en @kingdomjerseys.mx.</p>
+      </div>
+
+    </div>
+
+  </section>
+
+  <footer>
+
+    <div class="footer-top">
+
+      <div>
+
+        <p class="footer-brand">KINGDOMJERSEYS</p>
+
+        <p class="footer-tag">
+          Fútbol en la piel. Historia en cada hilo.
+        </p>
+
+        <p class="footer-note">
+          Tienda independiente de camisetas y diseños inspirados en la cultura del fútbol.
+          Sin afiliación oficial con clubes o selecciones.
+        </p>
+
+        <div class="footer-social">
+
+          <a href="#" aria-label="Instagram">
+            <img class="ico" src="/imgs/iconos/instagram-hueso.svg" alt="">
+          </a>
+
+          <a href="#" aria-label="TikTok">
+            <img class="ico" src="/imgs/iconos/send-hueso.svg" alt="">
+          </a>
+
+        </div>
+
+      </div>
+
+      <div class="footer-col">
+
+        <h5>LA TIENDA</h5>
+
+        <ul>
+          <li><a href="/novedades">Novedades</a></li>
+          <li><a href="/novedades?categoria=clubes">Camisetas de clubes</a></li>
+          <li><a href="/novedades?categoria=selecciones">Selecciones</a></li>
+          <li><a href="/novedades?categoria=retro">Colección retro</a></li>
+          <li><a href="/novedades?categoria=tribuna">Kingdom Studio</a></li>
+        </ul>
+
+      </div>
+
+      <div class="footer-col">
+
+        <h5>TE AYUDAMOS</h5>
+
+        <ul>
+          <li><a href="#">Envíos y entregas</a></li>
+          <li><a href="#">Cambios y devoluciones</a></li>
+          <li><a href="#">Guía de tallas</a></li>
+          <li><a href="#">Preguntas frecuentes</a></li>
+          <li><a href="#">Contacto</a></li>
+        </ul>
+
+      </div>
+
+      <div class="footer-col">
+
+        <h5>KINGDOMJERSEYS</h5>
+
+        <ul>
+          <li><a href="#">Nuestra historia</a></li>
+          <li><a href="#">Instagram</a></li>
+          <li><a href="#">TikTok</a></li>
+        </ul>
+
+      </div>
+
+    </div>
+
+    <div class="footer-bottom">
+
+      <span>© 2026 kingdomjerseys. Todos los precios incluyen IVA.</span>
+
+      <nav>
+        <a href="#">Privacidad</a>
+        <a href="#">Cookies</a>
+        <a href="#">Condiciones de compra</a>
+      </nav>
+
+      <span>México / MX $</span>
+
+    </div>
+
+  </footer>
+
+  </body>
+
+</html>
