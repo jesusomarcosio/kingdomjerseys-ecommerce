@@ -1,135 +1,15 @@
 <!DOCTYPE html>
-<html lang="es">
-  <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>KingdomJerseys — Algo salió mal</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
-    <link rel="icon" href="/imgs/logo-corona.svg" type="image/svg+xml">
-    <link rel="stylesheet" href="/css/styles.css">
-  </head>
-  <body>
-    <div class="marquee" aria-label="Avisos de la tienda">
-      <div class="marquee-track">
-        <div class="marquee-group">
-          <span>ENVÍOS A TODO MÉXICO</span>
-          <span>TEMPORADA 25/26 YA DISPONIBLE</span>
-          <span>PAGA CONTRA ENTREGA</span>
-          <span>ENVÍO GRATIS DESDE $500</span>
-        </div>
-        <div class="marquee-group" aria-hidden="true">
-          <span>ENVÍOS A TODO MÉXICO</span>
-          <span>TEMPORADA 25/26 YA DISPONIBLE</span>
-          <span>PAGA CONTRA ENTREGA</span>
-          <span>ENVÍO GRATIS DESDE $500</span>
-        </div>
+<th:block th:replace="~{layout/base :: layout(~{::title}, ~{::main}, null)}">
+  <title>KingdomJerseys — Algo salió mal</title>
+  <main>
+    <section class="error-page">
+      <div class="eyebrow">ERROR</div>
+      <h1>¡Ups! Algo salió mal.</h1>
+      <p>La página que buscas no existe o tu correo y contraseña no coinciden. Intenta de nuevo.</p>
+      <div class="error-actions">
+        <a class="btn btn-primary" href="/iniciar-sesion">Volver a iniciar sesión</a>
+        <a class="btn btn-outline" href="/">Ir al inicio</a>
       </div>
-    </div>
-
-    <header class="site-header">
-      <nav class="site-nav">
-        <a class="logo" href="/">
-          <img src="/imgs/logo-corona.svg" alt="">
-          <span>KINGDOMJERSEYS</span>
-        </a>
-        <input type="checkbox" id="menu-toggle" aria-label="Abrir menú">
-        <ul class="nav-links">
-          <li><a href="/novedades">Novedades</a></li>
-          <li><a href="/novedades?categoria=clubes">Clubes</a></li>
-          <li><a href="/novedades?categoria=selecciones">Selecciones</a></li>
-          <li><a href="/novedades?categoria=retro">Retro</a></li>
-          <li class="only-mobile"><a href="/iniciar-sesion">Iniciar sesión</a></li>
-        </ul>
-        <div class="nav-tools">
-          <form class="nav-search" action="/novedades" method="get" role="search">
-            <img class="ico" src="/imgs/iconos/search-ink.svg" alt="">
-            <input type="text" name="buscar" placeholder="Busca tu equipo o camiseta" autocomplete="off">
-          </form>
-          <a class="nav-icon nav-user" href="/iniciar-sesion" aria-label="Cuenta">
-            <img class="ico" src="/imgs/iconos/user-round-ink.svg" alt="">
-          </a>
-          <a class="nav-icon" href="/carrito" aria-label="Carrito">
-            <img class="ico" src="/imgs/iconos/shopping-bag-ink.svg" alt="">
-            <span>(0)</span>
-          </a>
-          <label class="menu-btn" for="menu-toggle">
-            <img class="ico" src="/imgs/iconos/menu-ink.svg" alt="">
-          </label>
-        </div>
-      </nav>
-    </header>
-
-    <main>
-      <section class="error-page">
-        <div class="eyebrow">ERROR</div>
-        <h1>¡Ups! Algo salió mal.</h1>
-        <p>La página que buscas no existe o tu correo y contraseña no coinciden. Intenta de nuevo.</p>
-        <div class="error-actions">
-          <a class="btn btn-primary" href="/iniciar-sesion">Volver a iniciar sesión</a>
-          <a class="btn btn-outline" href="/">Ir al inicio</a>
-        </div>
-      </section>
-    </main>
-
-    <footer>
-      <div class="footer-top">
-        <div>
-          <p class="footer-brand">KINGDOMJERSEYS</p>
-          <p class="footer-tag">Fútbol en la piel. Historia en cada hilo.</p>
-          <p class="footer-note">
-            Tienda independiente de camisetas y diseños inspirados en la cultura del fútbol. Sin afiliación oficial con clubes o selecciones.
-          </p>
-          <div class="footer-social">
-            <a href="#" aria-label="Instagram">
-              <img class="ico" src="/imgs/iconos/instagram-hueso.svg" alt="">
-            </a>
-            <a href="#" aria-label="TikTok"><img class="ico" src="/imgs/iconos/send-hueso.svg" alt=""></a>
-          </div>
-        </div>
-
-        <div class="footer-col">
-          <h5>LA TIENDA</h5>
-          <ul>
-            <li><a href="/novedades">Novedades</a></li>
-            <li><a href="/novedades?categoria=clubes">Camisetas de clubes</a></li>
-            <li><a href="/novedades?categoria=selecciones">Selecciones</a></li>
-            <li><a href="/novedades?categoria=retro">Colección retro</a></li>
-            <li><a href="/novedades">Kingdom Studio</a></li>
-          </ul>
-        </div>
-
-        <div class="footer-col">
-          <h5>TE AYUDAMOS</h5>
-          <ul>
-            <li><a href="#">Envíos y entregas</a></li>
-            <li><a href="#">Cambios y devoluciones</a></li>
-            <li><a href="#">Guía de tallas</a></li>
-            <li><a href="#">Preguntas frecuentes</a></li>
-            <li><a href="#">Contacto</a></li>
-          </ul>
-        </div>
-
-        <div class="footer-col">
-          <h5>KINGDOMJERSEYS</h5>
-          <ul>
-            <li><a href="#">Nuestra historia</a></li>
-            <li><a href="#">Instagram</a></li>
-            <li><a href="#">TikTok</a></li>
-          </ul>
-        </div>
-      </div>
-
-      <div class="footer-bottom">
-        <span>© 2026 kingdomjerseys. Todos los precios incluyen IVA.</span>
-        <nav>
-          <a href="#">Privacidad</a>
-          <a href="#">Cookies</a>
-          <a href="#">Condiciones de compra</a>
-        </nav>
-        <span>México / MX $</span>
-      </div>
-    </footer>
-  </body>
-</html>
+    </section>
+  </main>
+</th:block>
