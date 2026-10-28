@@ -1,0 +1,66 @@
+<!--/*@thymesVar id="pedidos" type="java.util.List<com.kingdomjerseys.admin.model.Pedido>"*/-->
+<!--/*@thymesVar id="estados" type="com.kingdomjerseys.admin.model.EstadoPedido[]"*/-->
+<!--/*@thymesVar id="estadoFiltro" type="com.kingdomjerseys.admin.model.EstadoPedido"*/-->
+<!DOCTYPE html>
+<th:block th:replace="~{layout/base :: layout(~{::title}, ~{::main}, 'pedidos')}">
+  <title>Pedidos | KingdomJerseys Admin</title>
+  <main class="contenido">
+    <div class="pagina-titulo">
+      <div>
+        <div class="eyebrow">TIENDA</div>
+        <h1>Pedidos</h1>
+      </div>
+    </div>
+
+    <section class="bloque">
+      <div class="filtros">
+        <nav class="chips">
+          <a class="chip" th:href="@{/admin/pedidos}" th:classappend="${estadoFiltro == null} ? 'activo'">Todos</a>
+          <a class="chip" th:each="estado : ${estados}" th:href="@{/admin/pedidos(estado=${estado})}"
+             th:classappend="${estadoFiltro == estado} ? 'activo'" th:text="${estado.etiqueta}">Pendiente</a>
+        </nav>
+      </div>
+
+      <div class="tabla-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>Pedido</th>
+              <th>Cliente</th>
+              <th>Producto</th>
+              <th>Estado</th>
+              <th class="num">Total</th>
+              <th></th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr th:each="pedido : ${pedidos}">
+              <td>
+                <span th:text="'#' + ${pedido.id}">#1</span>
+                <span class="sub" th:text="${#temporals.format(pedido.fecha, 'dd/MM/yyyy HH:mm')}">01/01/2026</span>
+              </td>
+              <td>
+                <span th:text="${pedido.nombreCliente}">Cliente</span>
+                <span class="sub" th:text="${pedido.correoCliente}">correo@ejemplo.com</span>
+              </td>
+              <td th:text="${pedido.producto.nombre}">Producto</td>
+              <td>
+                <span class="insignia" th:classappend="'insignia-' + ${#strings.toLowerCase(pedido.estado.name())}"
+                      th:text="${pedido.estado.etiqueta}">Pendiente</span>
+              </td>
+              <td class="num" th:text="'$' + ${#numbers.formatDecimal(pedido.total, 1, 'COMMA', 2, 'POINT')}">$0.00</td>
+              <td>
+                <div class="acciones">
+                  <a class="btn btn-outline btn-sm" th:href="@{/admin/pedidos/{id}(id=${pedido.id})}">Ver</a>
+                </div>
+              </td>
+            </tr>
+            <tr th:if="${#lists.isEmpty(pedidos)}">
+              <td colspan="6" class="vacio">No hay pedidos con ese estado.</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+  </main>
+</th:block>
