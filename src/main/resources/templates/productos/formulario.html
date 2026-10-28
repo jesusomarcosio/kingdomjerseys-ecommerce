@@ -1,0 +1,85 @@
+<!--/*@thymesVar id="producto" type="com.kingdomjerseys.admin.model.Producto"*/-->
+<!--/*@thymesVar id="categorias" type="java.util.List<java.lang.String>"*/-->
+<!DOCTYPE html>
+<th:block th:replace="~{layout/base :: layout(~{::title}, ~{::main}, 'productos')}">
+  <title th:text="${producto.id == null} ? 'Nuevo producto | KingdomJerseys Admin' : 'Editar producto | KingdomJerseys Admin'">Producto | KingdomJerseys Admin</title>
+  <main class="contenido">
+    <div class="pagina-titulo">
+      <div>
+        <div class="eyebrow">CATÁLOGO</div>
+        <h1 th:text="${producto.id == null} ? 'Nuevo producto' : 'Editar producto'">Producto</h1>
+      </div>
+      <a class="btn btn-outline" th:href="@{/admin/productos}">Volver</a>
+    </div>
+
+    <form class="formulario bloque" th:action="@{/admin/productos/guardar}" th:object="${producto}" method="post">
+      <div class="bloque-cuerpo">
+        <input type="hidden" th:field="*{id}">
+
+        <div class="formulario-rejilla">
+          <div class="campo campo-ancho">
+            <label for="nombre">Nombre</label>
+            <input type="text" id="nombre" th:field="*{nombre}" placeholder="Madrid · Camiseta local">
+            <span class="error-campo" th:if="${#fields.hasErrors('nombre')}" th:errors="*{nombre}">Error</span>
+          </div>
+
+          <div class="campo">
+            <label for="categoria">Categoría</label>
+            <select id="categoria" th:field="*{categoria}">
+              <option value="">Selecciona una categoría</option>
+              <option th:each="c : ${categorias}" th:value="${c}" th:text="${c}">Clubes</option>
+            </select>
+            <span class="error-campo" th:if="${#fields.hasErrors('categoria')}" th:errors="*{categoria}">Error</span>
+          </div>
+
+          <div class="campo">
+            <label for="etiqueta">Etiqueta</label>
+            <input type="text" id="etiqueta" th:field="*{etiqueta}" placeholder="NUEVA, FAVORITA...">
+            <span class="error-campo" th:if="${#fields.hasErrors('etiqueta')}" th:errors="*{etiqueta}">Error</span>
+          </div>
+
+          <div class="campo">
+            <label for="precio">Precio (MXN)</label>
+            <input type="number" id="precio" th:field="*{precio}" step="0.01" min="0" placeholder="600.00">
+            <span class="error-campo" th:if="${#fields.hasErrors('precio')}" th:errors="*{precio}">Error</span>
+          </div>
+
+          <div class="campo">
+            <label for="stock">Stock</label>
+            <input type="number" id="stock" th:field="*{stock}" min="0">
+            <span class="error-campo" th:if="${#fields.hasErrors('stock')}" th:errors="*{stock}">Error</span>
+          </div>
+
+          <div class="campo campo-ancho">
+            <label for="descripcion">Descripción</label>
+            <textarea id="descripcion" th:field="*{descripcion}" rows="3"></textarea>
+            <span class="error-campo" th:if="${#fields.hasErrors('descripcion')}" th:errors="*{descripcion}">Error</span>
+          </div>
+
+          <div class="campo campo-ancho">
+            <label for="imagen">Imagen</label>
+            <input type="text" id="imagen" th:field="*{imagen}" placeholder="/imgs/madrid-local.jpg">
+            <span class="ayuda">Ruta de la imagen dentro de static.</span>
+            <span class="error-campo" th:if="${#fields.hasErrors('imagen')}" th:errors="*{imagen}">Error</span>
+          </div>
+
+          <div class="campo">
+            <label class="check">
+              <input type="checkbox" th:field="*{novedad}">
+              Mostrar como novedad
+            </label>
+            <label class="check">
+              <input type="checkbox" th:field="*{activo}">
+              Producto activo
+            </label>
+          </div>
+        </div>
+
+        <div class="formulario-pie">
+          <button class="btn btn-primary" type="submit">Guardar</button>
+          <a class="btn btn-outline" th:href="@{/admin/productos}">Cancelar</a>
+        </div>
+      </div>
+    </form>
+  </main>
+</th:block>

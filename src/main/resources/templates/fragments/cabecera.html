@@ -1,0 +1,15 @@
+<header xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security"
+        class="cabecera" th:fragment="cabecera">
+  <span class="cabecera-titulo">PANEL DE ADMINISTRACIÓN</span>
+
+  <div class="cabecera-usuario">
+    <span class="quien" sec:authentication="name">admin@kingdomjerseys.com</span>
+
+    <form th:action="@{/admin/logout}" method="post">
+      <button class="btn btn-outline btn-sm" type="submit">
+        <img th:src="@{/imgs/iconos/log-out-ink.svg}" alt="">
+        Cerrar sesión
+      </button>
+    </form>
+  </div>
+</header>
