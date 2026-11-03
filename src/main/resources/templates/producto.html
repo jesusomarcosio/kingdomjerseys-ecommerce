@@ -1,6 +1,6 @@
 <!--/*@thymesVar id="cantidad" type="java.lang.Integer"*/-->
 <!DOCTYPE html>
-<th:block th:replace="~{layout/base :: layout(~{::title}, ~{::contenido}, 'novedades')}">
+<th:block th:replace="~{layout/tienda :: layout(~{::title}, ~{::contenido}, 'novedades')}">
   <title th:text="'KingdomJerseys — ' + ${producto.nombre}">KingdomJerseys — México · Selección</title>
   <th:block th:fragment="contenido">
     <main class="product" th:object="${producto}">
@@ -17,9 +17,8 @@
         <div class="product-right">
           <h1 th:text="*{nombre}">México · Selección</h1>
           <p class="product-price" th:text="'$ ' + ${#numbers.formatInteger(producto.precio,1,'COMMA')}">$ 600</p>
-          <form action="/carrito/agregar" method="post">
-            <input type="hidden" name="id" th:value="*{id}">
-            <!--/*@thymesVar id="cantidad" type="java.lang.Integer"*/-->
+          <form th:action="@{/carrito/agregar}" method="post">
+            <input type="hidden" name="id" th:value="*{slug}">
             <input type="hidden" name="cantidad" th:value="${cantidad}" value="1">
             <p class="qty-label">Cantidad</p>
             <div class="qty">

@@ -3,7 +3,7 @@
   <!--/*@thymesVar id="productos" type="java.util.List<com.kingdomjerseys.ecommerce.model.Producto>"*/-->
   <!--/*@thymesVar id="categoria" type="java.lang.String"*/-->
   <!--/*@thymesVar id="buscar" type="java.lang.String"*/-->
-  <th:block th:replace="~{layout/base :: layout(~{::title}, ~{::main, 'novedades')}">
+  <th:block th:replace="~{layout/tienda :: layout(~{::title}, ~{::main}, 'novedades')}">
   <title th:text="${buscar != null} ? 'KingdomJerseys - Resultados' : 'KingdomJerseys - Novedades'">KingdomJerseys - Novedades</title>
   <main>
       <div class="breadcrumb"><a href="/">Inicio</a><span>/</span><span th:text="${buscar != null} ? 'Resultados' : 'Novedades'">Novedades</span></div>
@@ -18,7 +18,7 @@
           <a href="/novedades" th:href="@{/novedades(buscar=${buscar})}" th:classappend="${categoria == 'todas'} ? 'active'">Todas</a>
           <a href="/novedades?categoria=clubes" th:href="@{/novedades(categoria='clubes',buscar=${buscar})}" th:classappend="${categoria == 'clubes'} ? 'active'">Clubes</a>
           <a href="/novedades?categoria=selecciones" th:href="@{/novedades(categoria='selecciones',buscar=${buscar})}" th:classappend="${categoria == 'selecciones'} ? 'active'">Selecciones</a>
-          <a href="/novedades?categoria=retro" th:href="@{/novedades(categoria='retro',buscar=${buscar})}" th:classappend="${categoria == 'retro'} ? 'active'">Retro</a>
+          <a href="/novedades?categoria=studio" th:href="@{/novedades(categoria='studio',buscar=${buscar})}" th:classappend="${categoria == 'studio'} ? 'active'">Studio</a>
         </div>
         <div class="filter-meta">
           <span th:text="${#lists.size(productos) + (#lists.size(productos) == 1 ? ' producto' : ' productos')}">8 productos</span>

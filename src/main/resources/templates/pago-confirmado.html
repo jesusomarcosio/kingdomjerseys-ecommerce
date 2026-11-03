@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="es" xmlns:th="http://www.thymeleaf.org">
-<th:block th:replace="~{layout/base :: layout(~{::title}, ~{::contenido}, 'novedades')}">
+<th:block th:replace="~{layout/tienda :: layout(~{::title}, ~{::contenido}, 'novedades')}">
   <title>KingdomJerseys - Pago confirmado</title>
   <th:block th:fragment="contenido">
     <main class="checkout">
@@ -29,7 +29,7 @@
             <p class="sum-price" th:text="'$ ' + ${#numbers.formatInteger(item.total,1,'COMMA')}">$ 600</p>
           </div>
         </div>
-        <form class="coupon" action="#" method="post">
+        <form class="coupon" action="#" method="post" onsubmit="return false;">
           <input type="text" name="cupon" placeholder="Código de cupón" aria-label="Código de cupón">
           <button type="button">Añadir</button>
         </form>

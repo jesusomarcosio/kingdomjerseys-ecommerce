@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<th:block th:replace="~{layout/base :: layout(~{::title}, ~{::contenido}, 'novedades')}">
+<th:block th:replace="~{layout/tienda :: layout(~{::title}, ~{::contenido}, 'novedades')}">
   <title>KingdomJerseys — Tu carrito</title>
   <th:block th:fragment="contenido">
     <main class="cart">
@@ -17,15 +17,15 @@
             <img src="/imgs/mexico-local.jpg" alt="México · Selección"
                  th:src="@{/imgs/{f}(f=${item.producto.imagenDetalle})}" th:alt="${item.producto.nombre}">
             <div>
-              <h3><a th:href="@{/producto/{id}(id=${item.producto.id})}" th:text="${item.producto.nombre}">México · Selección</a></h3>
-              <form action="/carrito/remover" method="post">
+              <h3><a th:href="@{/producto/{slug}(slug=${item.producto.slug})}" th:text="${item.producto.nombre}">México · Selección</a></h3>
+              <form th:action="@{/carrito/remover}" method="post">
                 <input type="hidden" name="id" th:value="${item.producto.id}">
                 <button class="link-green link-btn" type="submit">Remover</button>
               </form>
             </div>
           </div>
           <span class="cart-price" th:text="'$ ' + ${#numbers.formatInteger(item.producto.precio,1,'COMMA')}">$ 600</span>
-          <form class="qty-form" action="/carrito/cantidad" method="post">
+          <form class="qty-form" th:action="@{/carrito/cantidad}" method="post">
             <input type="hidden" name="id" th:value="${item.producto.id}">
             <div class="qty">
               <button type="submit" name="delta" value="1" aria-label="Más">+</button>

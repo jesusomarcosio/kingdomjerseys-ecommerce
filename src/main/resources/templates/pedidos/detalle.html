@@ -1,7 +1,7 @@
 <!--/*@thymesVar id="pedido" type="com.kingdomjerseys.admin.model.Pedido"*/-->
 <!--/*@thymesVar id="estados" type="com.kingdomjerseys.admin.model.EstadoPedido[]"*/-->
 <!DOCTYPE html>
-<th:block th:replace="~{layout/base :: layout(~{::title}, ~{::main}, 'pedidos')}">
+<th:block th:replace="~{layout/admin :: layout(~{::title}, ~{::main}, 'pedidos')}">
   <title th:text="'Pedido #' + ${pedido.id} + ' | KingdomJerseys Admin'">Pedido | KingdomJerseys Admin</title>
   <main class="contenido">
     <div class="pagina-titulo">

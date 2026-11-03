@@ -2,11 +2,12 @@ package com.kingdomjerseys.ecommerce.config;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.core.annotation.Order;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
-import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.security.web.SecurityFilterChain;
 
 @Configuration
 @EnableWebSecurity
@@ -17,24 +18,43 @@ public class SecurityConfig {
         return new BCryptPasswordEncoder();
     }
 
+    /** Panel: todo /admin/** exige rol ADMIN, excepto la pantalla de login. */
     @Bean
-    public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
+    @Order(1)
+    public SecurityFilterChain adminChain(HttpSecurity http) throws Exception {
         http
-                .csrf(csrf -> csrf.disable()) // TEMPORAL: se activa en la Fase 2
-                .headers(h -> h.frameOptions(f -> f.sameOrigin())) // consola H2 usa frames
+                .securityMatcher("/admin/**")
                 .authorizeHttpRequests(auth -> auth
-                        .requestMatchers("/h2-console/**").permitAll() // TEMPORAL
-                        .requestMatchers("/", "/index", "/index.html").permitAll()
-                        .requestMatchers("/novedades", "/novedades.html").permitAll()
-                        .requestMatchers("/iniciar-sesion", "/iniciar-sesion.html", "/registro", "/registro.html").permitAll()
-                        .requestMatchers("/crear-cuenta", "/autenticacion", "/cerrar-sesion").permitAll()
-                        .requestMatchers("/error", "/error.html").permitAll()
-                        .requestMatchers("/static/**", "/css/**", "/js/**", "/imgs/**", "/images/**").permitAll()
-                        .requestMatchers("/producto", "/producto/**", "/carrito", "/carrito/**",
-                                "/datos", "/envio", "/pago", "/pago-confirmado").permitAll()
-                        .anyRequest().authenticated()
+                        .requestMatchers("/admin/login").permitAll()
+                        .anyRequest().hasRole("ADMIN")
+                )
+                .formLogin(form -> form
+                        .loginPage("/admin/login")
+                        .loginProcessingUrl("/admin/login")
+                        .usernameParameter("correo")
+                        .passwordParameter("contrasenia")
+                        .defaultSuccessUrl("/admin/productos", true)
+                        .failureUrl("/admin/login?error")
+                        .permitAll()
+                )
+                .logout(logout -> logout
+                        .logoutUrl("/admin/logout")              // POST (CSRF activo)
+                        .logoutSuccessUrl("/admin/login?salio")
+                        .invalidateHttpSession(true)
+                        .deleteCookies("JSESSIONID")
                 );
+        // CSRF queda habilitado por defecto
         return http.build();
     }
 
+    /** Tienda: pública. El login de clientes no usa Spring Security todavía (deuda técnica). */
+    @Bean
+    @Order(2)
+    public SecurityFilterChain tiendaChain(HttpSecurity http) throws Exception {
+        http
+                .csrf(csrf -> csrf.ignoringRequestMatchers("/h2-console/**")) // solo consola H2
+                .headers(h -> h.frameOptions(f -> f.sameOrigin()))            // consola H2 usa frames
+                .authorizeHttpRequests(auth -> auth.anyRequest().permitAll());
+        return http.build();
+    }
 }

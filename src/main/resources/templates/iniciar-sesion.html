@@ -1,13 +1,13 @@
 <!DOCTYPE html>
-<th:block th:replace="~{layout/base :: layout(~{::title}, ~{::main}, null)}">
-    <tilte>KingdomJerseys - Iniciar sesion</tilte>
+<th:block th:replace="~{layout/tienda :: layout(~{::title}, ~{::main}, null)}">
+    <title>KingdomJerseys - Iniciar sesion</title>
     <main>
         <div class="auth-wrap">
             <div class="auth-panel">
                 <div class="eyebrow">TU CUENTA</div>
                 <h1>Bienvenido de vuelta.</h1>
                 <p>Entra para ver tus pedidos y guardar tus camisetas favoritas.</p>
-                <form action="#" method="post">
+                <form th:action="@{/autenticacion}" method="post">
                     <div class="form-group">
                         <label for="correo">Correo</label>
                         <input type="email" id="correo" name="correo" placeholder="tu@ejemplo.com" required>

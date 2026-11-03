@@ -2,7 +2,7 @@
 <html lang="es" xmlns:th="http://www.thymeleaf.org">
   <!--/*@thymesVar id="items" type="java.util.List<com.kingdomjerseys.ecommerce.model.ItemCarrito>"*/-->
   <!--/*@thymesVar id="subtotal" type="java.lang.Integer"*/-->
-  <th:block th:replace="~{layout/base :: layout(~{::title}, ~{::contenido}, 'novedades')}">
+  <th:block th:replace="~{layout/tienda :: layout(~{::title}, ~{::contenido}, 'novedades')}">
     <title>KingdomJerseys - Pago</title>
     <th:block th:fragment="contenido">
 
@@ -33,7 +33,7 @@
           </div>
         </div>
         <h2 class="co-sub">Método de pago</h2>
-        <form action="/pago" method="post">
+        <form th:action="@{/pago}" method="post">
           <div class="pay-box">
             <div class="pay-head">
               <img class="ico" src="/imgs/iconos/credit-card-verde.svg" alt="">
@@ -84,7 +84,7 @@
             <p class="sum-price" th:text="'$ ' + ${#numbers.formatInteger(item.total,1,'COMMA')}">$ 600</p>
           </div>
         </div>
-        <form class="coupon" action="#" method="post">
+        <form class="coupon" action="#" method="post" onsubmit="return false;">
           <input type="text" name="cupon" placeholder="Código de cupón" aria-label="Código de cupón">
           <button type="button">Añadir</button>
         </form>

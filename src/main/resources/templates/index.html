@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<th:block th:replace="~{layout/base :: layout(~{::title}, ~{::main}, null)}">
+<th:block th:replace="~{layout/tienda :: layout(~{::title}, ~{::main}, null)}">
   <title>KingdomJerseys — Viste como rey</title>
   <main>
     <section class="hero">
@@ -62,12 +62,12 @@
             </div>
           </a>
 
-          <a class="category-card" href="/novedades?categoria=retro">
-            <img src="/imgs/cat-clasicos.jpg" alt="Clásicos">
+          <a class="category-card" href="/novedades?categoria=studio">
+            <img src="/imgs/cancha-verde.jpg" alt="Kingdom Studio">
             <div class="info">
               <div>
-                <h3>Clásicos</h3>
-                <p>El fútbol que nunca pasa de moda</p>
+                <h3>Studio</h3>
+                <p>Diseño propio, espíritu de equipo</p>
               </div>
               <img class="ico" src="/imgs/iconos/arrow-up-right-blanco.svg" alt="">
             </div>
@@ -190,27 +190,6 @@
             <p class="price">$500</p>
           </article>
         </div>
-      </div>
-    </section>
-
-    <!-- Retro-->
-    <section class="retro">
-      <div class="retro-photo">
-        <img src="/imgs/retro-banca.jpg" alt="Camisetas retro sobre una banca de vestuario">
-        <span class="chip">KINGDOMJERSEYS / INSPIRACIÓN 90s</span>
-      </div>
-
-      <div class="retro-copy">
-        <div class="eyebrow">EL PASADO SIGUE JUGANDO</div>
-        <h2>NO ES NOSTALGIA.<br>ES HISTORIA.</h2>
-        <p>
-          Cuellos de los noventa. Patrones que marcaron una era. Redescubre los diseños que hicieron del fútbol algo inolvidable.
-        </p>
-        <div class="retro-price">Camisetas retro desde <b>$500</b></div>
-        <a class="btn btn-light" href="/novedades?categoria=retro">
-          Explorar los clásicos
-          <img class="ico" src="/imgs/iconos/arrow-up-right-oscuro.svg" alt="">
-        </a>
       </div>
     </section>
 

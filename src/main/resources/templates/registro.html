@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<th:block th:replace="~{layout/base :: layout(~{::title}, ~{::main}, null)}">
+<th:block th:replace="~{layout/tienda :: layout(~{::title}, ~{::main}, null)}">
   <title>KingdomJerseys — Crear cuenta</title>
   <main>
     <div class="auth-wrap">
@@ -7,7 +7,7 @@
         <div class="eyebrow">ÚNETE</div>
         <h1>Crea tu cuenta.</h1>
         <p>Guarda tus favoritas y compra más rápido.</p>
-        <form action="#" method="post">
+        <form th:action="@{/crear-cuenta}" method="post">
           <div class="form-group">
             <label for="nombre">Nombre</label>
             <input type="text" id="nombre" name="nombre" minlength="3" placeholder="Tu nombre" required>
