@@ -15,12 +15,13 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.server.ResponseStatusException;
 
+import java.math.BigDecimal;
 import java.util.List;
 
 @Controller
 public class MainController {
 
-    private static final List<String> CATEGORIAS = List.of("todas", "clubes", "selecciones", "retro");
+    private static final List<String> CATEGORIAS = List.of("todas", "clubes", "selecciones", "studio");
 
     private final UsuarioService usuarioService;
     private final ProductoService productoService;
@@ -175,7 +176,7 @@ public class MainController {
         return vista;
     }
 
-    private void resumen(Model model, List<ItemCarrito> items, int subtotal) {
+    private void resumen(Model model, List<ItemCarrito> items, BigDecimal subtotal) {
         model.addAttribute("items", items);
         model.addAttribute("subtotal", subtotal);
     }

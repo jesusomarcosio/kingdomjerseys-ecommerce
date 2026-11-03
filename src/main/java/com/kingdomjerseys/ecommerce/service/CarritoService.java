@@ -5,6 +5,7 @@ import com.kingdomjerseys.ecommerce.model.Producto;
 import org.springframework.stereotype.Service;
 import org.springframework.web.context.annotation.SessionScope;
 
+import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.LinkedHashMap;
 import java.util.List;
@@ -52,7 +53,7 @@ public class CarritoService {
         return new ArrayList<>(items.values());
     }
 
-    public int getSubtotal() {
+    public BigDecimal getSubtotal() {
         return subtotalDe(items.values());
     }
 
@@ -69,14 +70,14 @@ public class CarritoService {
         return ultimaOrden;
     }
 
-    public int getSubtotalUltimaOrden() {
+    public BigDecimal getSubtotalUltimaOrden() {
         return subtotalDe(ultimaOrden);
     }
 
-    private int subtotalDe(Iterable<ItemCarrito> lista) {
-        int suma = 0;
+    private BigDecimal subtotalDe(Iterable<ItemCarrito> lista) {
+        BigDecimal suma = BigDecimal.ZERO;
         for (ItemCarrito item : lista) {
-            suma += item.getTotal();
+            suma = suma.add(item.getTotal());
         }
         return suma;
     }

@@ -1,5 +1,7 @@
 package com.kingdomjerseys.ecommerce.model;
 
+import java.math.BigDecimal;
+
 public class ItemCarrito {
 
     private final Producto producto;
@@ -22,7 +24,7 @@ public class ItemCarrito {
         this.cantidad = cantidad;
     }
 
-    public int getTotal() {
-        return producto.getPrecio() * cantidad;
+    public BigDecimal getTotal() {
+        return producto.getPrecio().multiply(BigDecimal.valueOf(cantidad));
     }
 }
