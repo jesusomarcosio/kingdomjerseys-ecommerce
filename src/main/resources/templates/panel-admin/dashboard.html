@@ -1,0 +1,78 @@
+<!--/*@thymesVar id="resumen" type="com.kingdomjerseys.ecommerce.service.DashboardService.ResumenDashboard"*/-->
+<!DOCTYPE html>
+<th:block th:replace="~{layout/admin :: layout(~{::title}, ~{::main}, 'dashboard')}">
+    <title>Dashboard | KingdomJerseys Admin</title>
+    <main class="contenido">
+        <div class="pagina-titulo">
+            <div>
+                <div class="eyebrow">ADMINISTRACIÓN</div>
+                <h1>Dashboard</h1>
+                <p>Resumen del estado de la tienda.</p>
+            </div>
+        </div>
+
+        <section class="metricas">
+            <article class="metrica">
+                <span class="metrica-etiqueta">PRODUCTOS</span>
+                <strong class="metrica-valor" th:text="${resumen.totalProductos}">14</strong>
+                <span class="sub">en el catálogo</span>
+            </article>
+            <article class="metrica">
+                <span class="metrica-etiqueta">ACTIVOS</span>
+                <strong class="metrica-valor" th:text="${resumen.productosActivos}">14</strong>
+                <span class="sub">visibles en la tienda</span>
+            </article>
+            <article class="metrica">
+                <span class="metrica-etiqueta">STOCK BAJO</span>
+                <strong class="metrica-valor" th:classappend="${!#lists.isEmpty(resumen.stockBajo)} ? 'metrica-valor-alerta'"
+                        th:text="${#lists.size(resumen.stockBajo)}">0</strong>
+                <span class="sub" th:text="'con ' + ${resumen.umbralStockBajo} + ' o menos unidades'">con 5 o menos unidades</span>
+            </article>
+            <article class="metrica">
+                <span class="metrica-etiqueta">PEDIDOS</span>
+                <strong class="metrica-valor" th:text="${resumen.totalPedidos}">0</strong>
+                <span class="sub">en total</span>
+            </article>
+        </section>
+
+        <div class="dashboard-columnas">
+            <section class="bloque">
+                <div class="bloque-cabecera"><h2>Pedidos por estado</h2></div>
+                <ul class="estados-lista">
+                    <li th:each="c : ${resumen.pedidosPorEstado}">
+            <span class="insignia" th:classappend="'insignia-' + ${#strings.toLowerCase(c.estado.name())}"
+                  th:text="${c.estado.etiqueta}">Pendiente</span>
+                        <strong th:text="${c.cantidad}">0</strong>
+                    </li>
+                </ul>
+            </section>
+
+            <section class="bloque">
+                <div class="bloque-cabecera"><h2>Productos con stock bajo</h2></div>
+                <div class="tabla-wrap" th:if="${!#lists.isEmpty(resumen.stockBajo)}">
+                    <table>
+                        <thead>
+                        <tr><th>Producto</th><th class="num">Stock</th></tr>
+                        </thead>
+                        <tbody>
+                        <tr th:each="p : ${resumen.stockBajo}">
+                            <td>
+                                <div class="celda-producto">
+                                    <img class="miniatura" th:src="@{/imgs/{f}(f=${p.imagen})}" alt="">
+                                    <div>
+                                        <span th:text="${p.nombre}">Brasil</span>
+                                        <small th:text="${p.categoria.etiqueta}">Selecciones</small>
+                                    </div>
+                                </div>
+                            </td>
+                            <td class="num"><span class="stock-bajo" th:text="${p.stock}">3</span></td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <p class="vacio" th:if="${#lists.isEmpty(resumen.stockBajo)}"
+                   th:text="'Ningún producto activo tiene ' + ${resumen.umbralStockBajo} + ' unidades o menos.'">Todo en orden.</p>
+            </section>
+        </div>
+    </main>
+</th:block>

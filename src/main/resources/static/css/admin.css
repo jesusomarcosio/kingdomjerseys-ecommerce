@@ -735,3 +735,138 @@ h1{
   margin-top: 16px;
 }
 
+/* Menu lateral: iconos SVG en linea */
+.sidebar-nav svg{
+  width: 20px;
+  height: 20px;
+  flex-shrink: 0;
+}
+
+/* Dashboard: tarjetas de metricas */
+.metricas{
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 16px;
+  margin-bottom: 20px;
+}
+
+.metrica{
+  padding: 20px;
+  background: var(--white);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+}
+
+.metrica-etiqueta{
+  display: block;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: .1em;
+  color: var(--muted);
+}
+
+.metrica-valor{
+  display: block;
+  margin: 6px 0 2px;
+  font-family: var(--font-display);
+  font-size: 40px;
+  font-weight: 700;
+  line-height: 1;
+}
+
+.metrica-valor-alerta{
+  color: var(--danger);
+}
+
+.dashboard-columnas{
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+  align-items: start;
+}
+
+.dashboard-columnas .bloque + .bloque{
+  margin-top: 0;
+}
+
+.estados-lista{
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.estados-lista li{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 12px 20px;
+  border-bottom: 1px solid var(--line);
+}
+
+.estados-lista li:last-child{
+  border-bottom: none;
+}
+
+/* Paginacion (la usaran productos y pedidos) */
+.paginacion{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  flex-wrap: wrap;
+  padding: 14px 20px;
+  border-top: 1px solid var(--line);
+}
+
+.paginacion-info{
+  font-size: 13px;
+  color: var(--muted);
+}
+
+.paginacion-links{
+  display: flex;
+  gap: 6px;
+}
+
+.paginacion-links a,
+.paginacion-links span{
+  min-width: 34px;
+  padding: 6px 10px;
+  border: 1px solid var(--line);
+  border-radius: var(--radius-sm);
+  background: var(--white);
+  font-size: 13px;
+  font-weight: 500;
+  text-align: center;
+}
+
+.paginacion-links a:hover{
+  border-color: var(--ink);
+}
+
+.paginacion-links .activo{
+  background: var(--ink);
+  border-color: var(--ink);
+  color: var(--white);
+}
+
+.paginacion-links .deshabilitado{
+  background: #FBFAF6;
+  color: var(--muted);
+}
+
+@media (max-width: 900px){
+  .metricas{
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .dashboard-columnas{
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 560px){
+  .metricas{
+    grid-template-columns: 1fr;
+  }
+}

@@ -33,7 +33,7 @@ public class SecurityConfig {
                         .loginProcessingUrl("/admin/login")
                         .usernameParameter("correo")
                         .passwordParameter("contrasenia")
-                        .defaultSuccessUrl("/admin/productos", true)
+                        .defaultSuccessUrl("/admin/dashboard", true)
                         .failureUrl("/admin/login?error")
                         .permitAll()
                 )

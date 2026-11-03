@@ -1,19 +1,39 @@
-<aside xmlns:th="http://www.thymeleaf.org" class="sidebar" th:fragment="menu(seccion)">
-  <a class="sidebar-logo" th:href="@{/admin/productos}">
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="es">
+<body>
+<aside class="sidebar" th:fragment="menu(seccion)">
+  <a class="sidebar-logo" th:href="@{/admin/dashboard}">
     <img th:src="@{/imgs/logo-corona.svg}" alt="">
     <span>KINGDOMJERSEYS</span>
   </a>
 
-  <p class="sidebar-label">ADMINISTRACIÓN</p>
-
+  <div class="sidebar-label">GESTIÓN</div>
   <nav class="sidebar-nav">
+    <a th:href="@{/admin/dashboard}" th:classappend="${seccion == 'dashboard'} ? 'activo'">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+           stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <rect width="7" height="9" x="3" y="3" rx="1"/><rect width="7" height="5" x="14" y="3" rx="1"/>
+        <rect width="7" height="9" x="14" y="12" rx="1"/><rect width="7" height="5" x="3" y="16" rx="1"/>
+      </svg>
+      Dashboard
+    </a>
     <a th:href="@{/admin/productos}" th:classappend="${seccion == 'productos'} ? 'activo'">
       <img th:src="@{/imgs/iconos/shirt-hueso.svg}" alt="">
-      <span>Productos</span>
+      Productos
     </a>
     <a th:href="@{/admin/pedidos}" th:classappend="${seccion == 'pedidos'} ? 'activo'">
       <img th:src="@{/imgs/iconos/package-hueso.svg}" alt="">
-      <span>Pedidos</span>
+      Pedidos
+    </a>
+    <a th:href="@{/admin/administradores}" th:classappend="${seccion == 'administradores'} ? 'activo'">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+           stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/>
+        <path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 3.75"/>
+      </svg>
+      Administradores
     </a>
   </nav>
 </aside>
+</body>
+</html>

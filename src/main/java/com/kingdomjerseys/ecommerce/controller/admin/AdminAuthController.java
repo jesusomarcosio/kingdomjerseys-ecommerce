@@ -10,14 +10,11 @@ public class AdminAuthController {
 
     @GetMapping("/admin/login")
     public String login(Authentication auth) {
-        boolean yaAutenticado = auth != null
-                && auth.isAuthenticated()
+        boolean yaAutenticado = auth != null && auth.isAuthenticated()
                 && !(auth instanceof AnonymousAuthenticationToken);
-        return yaAutenticado ? "redirect:/admin/productos" : "login";
+        return yaAutenticado ? "redirect:/admin/dashboard" : "login";
     }
 
     @GetMapping("/admin")
-    public String raiz() {
-        return "redirect:/admin/productos";
-    }
+    public String raiz() { return "redirect:/admin/dashboard"; }
 }
