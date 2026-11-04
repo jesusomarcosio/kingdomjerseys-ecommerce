@@ -889,3 +889,20 @@ h1{
 .acciones .btn{
   white-space: nowrap;
 }
+
+/* Dashboard: estados como enlaces */
+.estados-lista li{
+  display: block;
+  padding: 0;
+}
+
+.estados-lista a{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 12px 20px;
+}
+
+.estados-lista a:hover{
+  background: #FBFAF6;
+}

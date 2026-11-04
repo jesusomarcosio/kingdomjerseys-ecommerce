@@ -10,23 +10,21 @@ import org.springframework.stereotype.Service;
 
 @Service
 public class AdminUserDetailsService implements UserDetailsService {
-
     private final AdministradorRepository administradorRepository;
 
     public AdminUserDetailsService(AdministradorRepository administradorRepository) {
         this.administradorRepository = administradorRepository;
     }
 
-    /** Aquí "username" es el correo del administrador. */
+    /** "username" = correo del administrador (sin importar mayúsculas). */
     @Override
     public UserDetails loadUserByUsername(String correo) throws UsernameNotFoundException {
-        Administrador admin = administradorRepository.findByCorreo(correo)
+        Administrador admin = administradorRepository.findByCorreoIgnoreCase(correo)
                 .orElseThrow(() -> new UsernameNotFoundException("Administrador no encontrado"));
-
-        return User.withUsername(admin.getCorreo())
-                .password(admin.getContrasenia())   // hash BCrypt
+        return User.withUsername(admin.getCorreo())      // el nombre de la sesión es el correo guardado
+                .password(admin.getContrasenia())        // hash BCrypt
                 .roles("ADMIN")
-                .disabled(!admin.isActivo())        // cuenta desactivada = no entra
+                .disabled(!admin.isActivo())
                 .build();
     }
 }

@@ -1,17 +1,22 @@
 package com.kingdomjerseys.ecommerce.config;
 
 import com.kingdomjerseys.ecommerce.model.Administrador;
-import com.kingdomjerseys.ecommerce.model.enums.Categoria;
+import com.kingdomjerseys.ecommerce.model.DetallePedido;
+import com.kingdomjerseys.ecommerce.model.Pedido;
 import com.kingdomjerseys.ecommerce.model.Producto;
+import com.kingdomjerseys.ecommerce.model.enums.Categoria;
+import com.kingdomjerseys.ecommerce.model.enums.EstadoPedido;
 import com.kingdomjerseys.ecommerce.repository.AdministradorRepository;
+import com.kingdomjerseys.ecommerce.repository.PedidoRepository;
 import com.kingdomjerseys.ecommerce.repository.ProductoRepository;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Component;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.math.BigDecimal;
+import java.time.LocalDateTime;
 
-/** Datos mock para desarrollo. Solo inserta si las tablas están vacías. */
 @Component
 public class DataInitializer implements CommandLineRunner {
 
@@ -23,26 +28,29 @@ public class DataInitializer implements CommandLineRunner {
 
     private final ProductoRepository productoRepository;
     private final AdministradorRepository administradorRepository;
+    private final PedidoRepository pedidoRepository;
     private final PasswordEncoder passwordEncoder;
 
     public DataInitializer(ProductoRepository productoRepository,
                            AdministradorRepository administradorRepository,
+                           PedidoRepository pedidoRepository,
                            PasswordEncoder passwordEncoder) {
         this.productoRepository = productoRepository;
         this.administradorRepository = administradorRepository;
+        this.pedidoRepository = pedidoRepository;
         this.passwordEncoder = passwordEncoder;
     }
 
     @Override
+    @Transactional
     public void run(String... args) {
         if (administradorRepository.count() == 0) {
-            // Solo desarrollo: cambiar esta contraseña fuera de este entorno
+            // Solo desarrollo
             administradorRepository.save(new Administrador(
                     "Administrador", "admin@kingdomjerseys.com", passwordEncoder.encode("Admin123!")));
         }
-        if (productoRepository.count() == 0) {
-            cargarProductos();
-        }
+        if (productoRepository.count() == 0) cargarProductos();
+        if (pedidoRepository.count() == 0) cargarPedidos();
     }
 
     private void cargarProductos() {
@@ -97,5 +105,72 @@ public class DataInitializer implements CommandLineRunner {
         p.setEtiqueta(etiqueta);
         p.setActivo(true);
         productoRepository.save(p);
+    }
+
+    // ---- Pedidos de ejemplo (clientes ficticios) ----
+
+    private record Linea(String slug, String talla, int cantidad) {}
+
+    private void cargarPedidos() {
+        pedido(0, EstadoPedido.PENDIENTE, "Luis Hernández", "luis.hernandez@example.com",
+                "Calle Sonora 123, Col. Centro, Cd. Obregón, Sonora, 85000",
+                new Linea("mexico-seleccion", "M", 1), new Linea("cancha-verde", "L", 1));
+        pedido(1, EstadoPedido.PENDIENTE, "Mariana López", "mariana.lopez@example.com",
+                "Av. Reforma 456, Col. Juárez, Ciudad de México, 06600",
+                new Linea("psg-local", "S", 1));
+        pedido(1, EstadoPedido.PENDIENTE, "Andrés Soto", "andres.soto@example.com",
+                "Calle Morelos 88, Col. Centro, Mazatlán, Sinaloa, 82000",
+                new Linea("alemania-seleccion", "XL", 1), new Linea("madrid-local", "M", 1));
+        pedido(2, EstadoPedido.PAGADO, "Jorge Pérez", "jorge.perez@example.com",
+                "Blvd. Kino 789, Col. Valle Verde, Hermosillo, Sonora, 83200",
+                new Linea("madrid-visitante", "L", 2));
+        pedido(3, EstadoPedido.PAGADO, "Ana Torres", "ana.torres@example.com",
+                "Calle 5 de Febrero 321, Col. Centro, Guadalajara, Jalisco, 44100",
+                new Linea("argentina", "M", 1), new Linea("brasil", "M", 1), new Linea("barcelona-local", "M", 1));
+        pedido(4, EstadoPedido.PAGADO, "Paola Rivera", "paola.rivera@example.com",
+                "Av. Obregón 210, Col. Modelo, Guaymas, Sonora, 85440",
+                new Linea("cancha-hueso", "M", 1));
+        pedido(5, EstadoPedido.ENVIADO, "Diego Morales", "diego.morales@example.com",
+                "Av. Universidad 654, Col. Las Palmas, Monterrey, Nuevo León, 64000",
+                new Linea("liverpool-local", "XL", 1));
+        pedido(7, EstadoPedido.ENVIADO, "Sofía Vargas", "sofia.vargas@example.com",
+                "Calle Hidalgo 987, Col. Centro, Navojoa, Sonora, 85800",
+                new Linea("cancha-hueso", "S", 2));
+        pedido(9, EstadoPedido.ENTREGADO, "Ricardo Núñez", "ricardo.nunez@example.com",
+                "Av. Juárez 159, Col. Centro, Cd. Obregón, Sonora, 85000",
+                new Linea("boca-local", "L", 1), new Linea("river-local", "L", 1));
+        pedido(12, EstadoPedido.ENTREGADO, "Fernanda Ruiz", "fernanda.ruiz@example.com",
+                "Calle Madero 45, Col. Centro, Tijuana, Baja California, 22000",
+                new Linea("mexico-seleccion", "S", 2));
+        pedido(15, EstadoPedido.ENTREGADO, "Héctor Medina", "hector.medina@example.com",
+                "Blvd. Díaz Ordaz 902, Col. Chapultepec, Querétaro, Querétaro, 76000",
+                new Linea("juventus-local", "M", 1), new Linea("brasil", "L", 1));
+        pedido(11, EstadoPedido.CANCELADO, "Valeria Castro", "valeria.castro@example.com",
+                "Calle Allende 753, Col. Centro, Culiacán, Sinaloa, 80000",
+                new Linea("juventus-local", "M", 1));
+    }
+
+    private void pedido(int diasAtras, EstadoPedido estado, String nombre, String correo,
+                        String direccion, Linea... lineas) {
+        Pedido pedido = new Pedido();
+        pedido.setFecha(LocalDateTime.now().minusDays(diasAtras).minusHours(diasAtras % 6));
+        pedido.setEstado(estado);
+        pedido.setNombreCliente(nombre);
+        pedido.setCorreoCliente(correo);
+        pedido.setDireccionEnvio(direccion);
+
+        BigDecimal total = BigDecimal.ZERO;
+        for (Linea linea : lineas) {
+            Producto producto = productoRepository.findBySlugAndActivoTrue(linea.slug()).orElseThrow();
+            DetallePedido detalle = new DetallePedido(producto, linea.talla(), linea.cantidad(), producto.getPrecio());
+            pedido.agregarDetalle(detalle);
+            total = total.add(detalle.getSubtotal());
+            // Un pedido cancelado ya devolvió su stock; el resto lo tiene descontado
+            if (estado != EstadoPedido.CANCELADO) {
+                producto.setStock(producto.getStock() - linea.cantidad());
+            }
+        }
+        pedido.setTotal(total);
+        pedidoRepository.save(pedido);
     }
 }

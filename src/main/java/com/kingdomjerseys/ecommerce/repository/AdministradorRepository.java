@@ -8,8 +8,7 @@ import java.util.Optional;
 
 @Repository
 public interface AdministradorRepository extends JpaRepository<Administrador, Long> {
-
-    Optional<Administrador> findByCorreo(String correo);
-
-    boolean existsByCorreo(String correo);
+    Optional<Administrador> findByCorreoIgnoreCase(String correo);
+    boolean existsByCorreoIgnoreCase(String correo);
+    long countByActivoTrue();
 }

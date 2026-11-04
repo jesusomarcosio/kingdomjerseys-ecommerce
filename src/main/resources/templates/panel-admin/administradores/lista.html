@@ -1,0 +1,54 @@
+<!--/*@thymesVar id="administradores" type="java.util.List<com.kingdomjerseys.ecommerce.service.AdministradorService.AdministradorResumen>"*/-->
+<!--/*@thymesVar id="correoActual" type="java.lang.String"*/-->
+<!DOCTYPE html>
+<th:block th:replace="~{layout/admin :: layout(~{::title}, ~{::main}, 'administradores')}">
+    <title>Administradores | KingdomJerseys Admin</title>
+    <main class="contenido">
+        <div class="pagina-titulo">
+            <div>
+                <div class="eyebrow">SEGURIDAD</div>
+                <h1>Administradores</h1>
+                <p th:text="${#lists.size(administradores) + (#lists.size(administradores) == 1 ? ' cuenta' : ' cuentas')}">1 cuenta</p>
+            </div>
+            <a class="btn btn-primary" th:href="@{/admin/administradores/nuevo}">Nuevo administrador</a>
+        </div>
+
+        <section class="bloque">
+            <div class="tabla-wrap">
+                <table>
+                    <thead>
+                    <tr>
+                        <th>Nombre</th>
+                        <th>Correo</th>
+                        <th>Estado</th>
+                        <th class="num">Acciones</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr th:each="a : ${administradores}">
+                        <td>
+                            <span th:text="${a.nombre}">Administrador</span>
+                            <span class="sub" th:if="${#strings.equalsIgnoreCase(a.correo, correoActual)}">Tu cuenta</span>
+                        </td>
+                        <td th:text="${a.correo}">admin@kingdomjerseys.com</td>
+                        <td>
+                <span class="insignia" th:classappend="${a.activo} ? 'insignia-activo' : 'insignia-inactivo'"
+                      th:text="${a.activo} ? 'Activo' : 'Inactivo'">Activo</span>
+                        </td>
+                        <td>
+                            <div class="acciones" th:unless="${#strings.equalsIgnoreCase(a.correo, correoActual)}">
+                                <form th:action="@{/admin/administradores/{id}/activo(id=${a.id})}" method="post"
+                                      th:attr="data-activo=${a.activo}"
+                                      onsubmit="return this.dataset.activo !== 'true' || confirm('¿Desactivar esta cuenta? Ya no podrá iniciar sesión.');">
+                                    <button class="btn btn-outline btn-sm" type="submit"
+                                            th:text="${a.activo} ? 'Desactivar' : 'Activar'">Desactivar</button>
+                                </form>
+                            </div>
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+    </main>
+</th:block>

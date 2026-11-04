@@ -1,0 +1,82 @@
+<!--/*@thymesVar id="resultado" type="org.springframework.data.domain.Page<com.kingdomjerseys.ecommerce.service.PedidoService.PedidoResumen>"*/-->
+<!--/*@thymesVar id="estado" type="java.lang.String"*/-->
+<!DOCTYPE html>
+<th:block th:replace="~{layout/admin :: layout(~{::title}, ~{::main}, 'pedidos')}">
+    <title>Pedidos | KingdomJerseys Admin</title>
+    <main class="contenido">
+        <div class="pagina-titulo">
+            <div>
+                <div class="eyebrow">VENTAS</div>
+                <h1>Pedidos</h1>
+                <p th:text="${resultado.totalElements + (resultado.totalElements == 1 ? ' pedido' : ' pedidos')}">12 pedidos</p>
+            </div>
+        </div>
+
+        <section class="bloque">
+            <div class="filtros">
+                <div class="chips">
+                    <a class="chip" th:href="@{/admin/pedidos}" th:classappend="${#strings.isEmpty(estado)} ? 'activo'">Todos</a>
+                    <a class="chip" th:each="e : ${estados}" th:href="@{/admin/pedidos(estado=${e.name()})}"
+                       th:classappend="${estado == e.name()} ? 'activo'" th:text="${e.etiqueta}">Pendiente</a>
+                </div>
+            </div>
+
+            <div class="tabla-wrap" th:if="${!#lists.isEmpty(resultado.content)}">
+                <table>
+                    <thead>
+                    <tr>
+                        <th>Pedido</th>
+                        <th>Fecha</th>
+                        <th>Cliente</th>
+                        <th class="num">Artículos</th>
+                        <th class="num">Total</th>
+                        <th>Estado</th>
+                        <th class="num">Acciones</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr th:each="p : ${resultado.content}">
+                        <td><a th:href="@{/admin/pedidos/{id}(id=${p.id})}" th:text="'#' + ${p.id}">#1</a></td>
+                        <td th:text="${#temporals.format(p.fecha, 'dd/MM/yyyy HH:mm')}">01/11/2026 10:30</td>
+                        <td>
+                            <span th:text="${p.nombreCliente}">Luis Hernández</span>
+                            <span class="sub" th:text="${p.correoCliente}">luis@example.com</span>
+                        </td>
+                        <td class="num" th:text="${p.articulos}">2</td>
+                        <td class="num" th:text="'$' + ${#numbers.formatInteger(p.total,1,'COMMA')}">$1,100</td>
+                        <td>
+                <span class="insignia" th:classappend="'insignia-' + ${#strings.toLowerCase(p.estado.name())}"
+                      th:text="${p.estado.etiqueta}">Pendiente</span>
+                        </td>
+                        <td>
+                            <div class="acciones">
+                                <a class="btn btn-outline btn-sm" th:href="@{/admin/pedidos/{id}(id=${p.id})}">Ver detalle</a>
+                            </div>
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <p class="vacio" th:if="${#lists.isEmpty(resultado.content)}">No hay pedidos con ese estado.</p>
+
+            <div class="paginacion" th:if="${resultado.totalPages > 1}">
+        <span class="paginacion-info"
+              th:text="${'Mostrando ' + (resultado.number * resultado.size + 1) + '–' + (resultado.number * resultado.size + resultado.numberOfElements) + ' de ' + resultado.totalElements}">Mostrando 1–10 de 12</span>
+                <nav class="paginacion-links" aria-label="Paginación">
+                    <a th:if="${resultado.hasPrevious()}"
+                       th:href="@{/admin/pedidos(estado=${estado},pagina=${resultado.number - 1})}" aria-label="Anterior">‹</a>
+                    <span th:unless="${resultado.hasPrevious()}" class="deshabilitado">‹</span>
+                    <th:block th:each="n : ${#numbers.sequence(0, resultado.totalPages - 1)}">
+                        <a th:if="${n != resultado.number}"
+                           th:href="@{/admin/pedidos(estado=${estado},pagina=${n})}" th:text="${n + 1}">1</a>
+                        <span th:if="${n == resultado.number}" class="activo" th:text="${n + 1}">1</span>
+                    </th:block>
+                    <a th:if="${resultado.hasNext()}"
+                       th:href="@{/admin/pedidos(estado=${estado},pagina=${resultado.number + 1})}" aria-label="Siguiente">›</a>
+                    <span th:unless="${resultado.hasNext()}" class="deshabilitado">›</span>
+                </nav>
+            </div>
+        </section>
+    </main>
+</th:block>

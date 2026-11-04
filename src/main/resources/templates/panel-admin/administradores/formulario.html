@@ -1,0 +1,56 @@
+<!--/*@thymesVar id="form" type="com.kingdomjerseys.ecommerce.dto.AdministradorForm"*/-->
+<!DOCTYPE html>
+<th:block th:replace="~{layout/admin :: layout(~{::title}, ~{::main}, 'administradores')}">
+    <title>Nuevo administrador | KingdomJerseys Admin</title>
+    <main class="contenido">
+        <div class="pagina-titulo">
+            <div>
+                <div class="eyebrow">SEGURIDAD</div>
+                <h1>Nuevo administrador</h1>
+            </div>
+        </div>
+
+        <form class="formulario" th:object="${form}" th:action="@{/admin/administradores}" method="post">
+
+            <p class="alerta alerta-error alerta-form" th:each="e : ${#fields.globalErrors()}" th:text="${e}">Error general</p>
+
+            <div class="bloque">
+                <div class="bloque-cuerpo">
+                    <div class="formulario-rejilla">
+
+                        <div class="campo">
+                            <label for="nombre">Nombre</label>
+                            <input type="text" id="nombre" th:field="*{nombre}" maxlength="100" autocomplete="off" required>
+                            <span class="error-campo" th:if="${#fields.hasErrors('nombre')}" th:errors="*{nombre}">Error</span>
+                        </div>
+
+                        <div class="campo">
+                            <label for="correo">Correo</label>
+                            <input type="email" id="correo" th:field="*{correo}" maxlength="150" autocomplete="off" required>
+                            <span class="error-campo" th:if="${#fields.hasErrors('correo')}" th:errors="*{correo}">Error</span>
+                        </div>
+
+                        <div class="campo">
+                            <label for="contrasenia">Contraseña</label>
+                            <input type="password" id="contrasenia" th:field="*{contrasenia}" maxlength="72" autocomplete="new-password" required>
+                            <span class="ayuda">Mínimo 8 caracteres, con letras y números.</span>
+                            <span class="error-campo" th:if="${#fields.hasErrors('contrasenia')}" th:errors="*{contrasenia}">Error</span>
+                        </div>
+
+                        <div class="campo">
+                            <label for="confirmacion">Confirmar contraseña</label>
+                            <input type="password" id="confirmacion" th:field="*{confirmacion}" maxlength="72" autocomplete="new-password" required>
+                            <span class="error-campo" th:if="${#fields.hasErrors('confirmacion')}" th:errors="*{confirmacion}">Error</span>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+
+            <div class="formulario-pie">
+                <button class="btn btn-primary" type="submit">Crear administrador</button>
+                <a class="btn btn-outline" th:href="@{/admin/administradores}">Cancelar</a>
+            </div>
+        </form>
+    </main>
+</th:block>
