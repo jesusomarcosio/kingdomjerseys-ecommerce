@@ -1,0 +1,120 @@
+<!--/*@thymesVar id="form" type="com.kingdomjerseys.ecommerce.dto.ProductoForm"*/-->
+<!--/*@thymesVar id="modoEdicion" type="java.lang.Boolean"*/-->
+<!--/*@thymesVar id="productoId" type="java.lang.Long"*/-->
+<!DOCTYPE html>
+<th:block th:replace="~{layout/admin :: layout(~{::title}, ~{::main}, 'productos')}">
+    <title th:text="(${modoEdicion} ? 'Editar producto' : 'Nuevo producto') + ' | KingdomJerseys Admin'">Producto | KingdomJerseys Admin</title>
+    <main class="contenido">
+        <div class="pagina-titulo">
+            <div>
+                <div class="eyebrow">CATÁLOGO</div>
+                <h1 th:text="${modoEdicion} ? 'Editar producto' : 'Nuevo producto'">Nuevo producto</h1>
+            </div>
+        </div>
+
+        <form class="formulario" th:object="${form}" method="post"
+              th:action="${modoEdicion} ? @{/admin/productos/{id}(id=${productoId})} : @{/admin/productos}">
+
+            <p class="alerta alerta-error alerta-form" th:each="e : ${#fields.globalErrors()}" th:text="${e}">Error general</p>
+
+            <div class="bloque">
+                <div class="bloque-cuerpo">
+                    <div class="formulario-rejilla">
+
+                        <div class="campo campo-ancho">
+                            <label for="nombre">Nombre</label>
+                            <input type="text" id="nombre" th:field="*{nombre}" maxlength="150" required>
+                            <span class="error-campo" th:if="${#fields.hasErrors('nombre')}" th:errors="*{nombre}">Error</span>
+                        </div>
+
+                        <div class="campo">
+                            <label for="slug">Slug (URL)</label>
+                            <input type="text" id="slug" th:field="*{slug}" maxlength="100"
+                                   th:readonly="${modoEdicion}" placeholder="se genera del nombre">
+                            <span class="ayuda"
+                                  th:text="${modoEdicion} ? 'No se puede cambiar: cambiaría la URL pública.' : 'Opcional. Minúsculas, números y guiones.'">Ayuda</span>
+                            <span class="error-campo" th:if="${#fields.hasErrors('slug')}" th:errors="*{slug}">Error</span>
+                        </div>
+
+                        <div class="campo">
+                            <label for="categoria">Categoría</label>
+                            <select id="categoria" th:field="*{categoria}" required>
+                                <option value="">Selecciona una categoría</option>
+                                <option th:each="c : ${categorias}" th:value="${c.name()}" th:text="${c.etiqueta}">Clubes</option>
+                            </select>
+                            <span class="error-campo" th:if="${#fields.hasErrors('categoria')}" th:errors="*{categoria}">Error</span>
+                        </div>
+
+                        <div class="campo">
+                            <label for="precio">Precio (MXN, pesos enteros)</label>
+                            <input type="number" id="precio" th:field="*{precio}" min="1" max="999999" step="1" required>
+                            <span class="error-campo" th:if="${#fields.hasErrors('precio')}" th:errors="*{precio}">Error</span>
+                        </div>
+
+                        <div class="campo">
+                            <label for="stock">Stock</label>
+                            <input type="number" id="stock" th:field="*{stock}" min="0" max="100000" step="1" required>
+                            <span class="error-campo" th:if="${#fields.hasErrors('stock')}" th:errors="*{stock}">Error</span>
+                        </div>
+
+                        <div class="campo campo-ancho">
+                            <label for="descripcion">Descripción</label>
+                            <textarea id="descripcion" th:field="*{descripcion}" maxlength="1000" required></textarea>
+                            <span class="error-campo" th:if="${#fields.hasErrors('descripcion')}" th:errors="*{descripcion}">Error</span>
+                        </div>
+
+                        <div class="campo">
+                            <label for="imagen">Imagen de la tarjeta</label>
+                            <input type="text" id="imagen" th:field="*{imagen}" maxlength="255" placeholder="brasil.jpg" required>
+                            <span class="ayuda">Nombre del archivo dentro de static/imgs.</span>
+                            <span class="error-campo" th:if="${#fields.hasErrors('imagen')}" th:errors="*{imagen}">Error</span>
+                        </div>
+
+                        <div class="campo">
+                            <label for="imagenDetalle">Imagen de detalle</label>
+                            <input type="text" id="imagenDetalle" th:field="*{imagenDetalle}" maxlength="255" placeholder="brasil.jpg">
+                            <span class="ayuda">Opcional. Si la dejas vacía se usa la imagen de la tarjeta.</span>
+                            <span class="error-campo" th:if="${#fields.hasErrors('imagenDetalle')}" th:errors="*{imagenDetalle}">Error</span>
+                        </div>
+
+                        <div class="campo">
+                            <label for="material">Material</label>
+                            <input type="text" id="material" th:field="*{material}" maxlength="255" required>
+                            <span class="error-campo" th:if="${#fields.hasErrors('material')}" th:errors="*{material}">Error</span>
+                        </div>
+
+                        <div class="campo">
+                            <label for="ajuste">Ajuste</label>
+                            <input type="text" id="ajuste" th:field="*{ajuste}" maxlength="255" required>
+                            <span class="error-campo" th:if="${#fields.hasErrors('ajuste')}" th:errors="*{ajuste}">Error</span>
+                        </div>
+
+                        <div class="campo">
+                            <label for="color">Color</label>
+                            <input type="text" id="color" th:field="*{color}" maxlength="255" required>
+                            <span class="error-campo" th:if="${#fields.hasErrors('color')}" th:errors="*{color}">Error</span>
+                        </div>
+
+                        <div class="campo">
+                            <label for="etiqueta">Etiqueta</label>
+                            <input type="text" id="etiqueta" th:field="*{etiqueta}" maxlength="50" placeholder="NUEVA">
+                            <span class="ayuda">Opcional. Aparece como insignia en la tarjeta.</span>
+                            <span class="error-campo" th:if="${#fields.hasErrors('etiqueta')}" th:errors="*{etiqueta}">Error</span>
+                        </div>
+
+                        <div class="campo">
+                            <label class="check"><input type="checkbox" th:field="*{novedad}"> Mostrar en Novedades</label>
+                            <label class="check"><input type="checkbox" th:field="*{activo}"> Activo (visible en la tienda)</label>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+
+            <div class="formulario-pie">
+                <button class="btn btn-primary" type="submit">Guardar</button>
+                <a class="btn btn-outline" th:href="@{/admin/productos}">Cancelar</a>
+            </div>
+        </form>
+    </main>
+</th:block>

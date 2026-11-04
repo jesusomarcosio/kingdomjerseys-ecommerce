@@ -870,3 +870,22 @@ h1{
     grid-template-columns: 1fr;
   }
 }
+
+/* Productos: stock editable dentro de la tabla */
+.stock-form{
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 6px;
+  margin: 0;
+}
+
+.stock-form input[type="number"]{
+  width: 84px;
+  padding: 6px 8px;
+  text-align: right;
+}
+
+.acciones .btn{
+  white-space: nowrap;
+}

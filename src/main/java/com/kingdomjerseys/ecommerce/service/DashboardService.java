@@ -15,7 +15,7 @@ import java.util.List;
 public class DashboardService {
 
     /** Un producto activo con este stock o menos se considera "stock bajo". */
-    private static final int UMBRAL_STOCK_BAJO = 5;
+    public static final int UMBRAL_STOCK_BAJO = 5;
 
     private final ProductoRepository productoRepository;
     private final PedidoRepository pedidoRepository;

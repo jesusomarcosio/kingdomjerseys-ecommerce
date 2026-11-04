@@ -1,0 +1,112 @@
+<!--/*@thymesVar id="resultado" type="org.springframework.data.domain.Page<com.kingdomjerseys.ecommerce.model.Producto>"*/-->
+<!--/*@thymesVar id="categoria" type="java.lang.String"*/-->
+<!--/*@thymesVar id="buscar" type="java.lang.String"*/-->
+<!DOCTYPE html>
+<th:block th:replace="~{layout/admin :: layout(~{::title}, ~{::main}, 'productos')}">
+    <title>Productos | KingdomJerseys Admin</title>
+    <main class="contenido">
+        <div class="pagina-titulo">
+            <div>
+                <div class="eyebrow">CATÁLOGO</div>
+                <h1>Productos</h1>
+                <p th:text="${resultado.totalElements + (resultado.totalElements == 1 ? ' producto' : ' productos')}">14 productos</p>
+            </div>
+            <a class="btn btn-primary" th:href="@{/admin/productos/nuevo}">Nuevo producto</a>
+        </div>
+
+        <section class="bloque">
+            <div class="filtros">
+                <form class="buscador" th:action="@{/admin/productos}" method="get" role="search">
+                    <img th:src="@{/imgs/iconos/search-ink.svg}" alt="">
+                    <input type="text" name="buscar" th:value="${buscar}" placeholder="Buscar por nombre" aria-label="Buscar por nombre" autocomplete="off">
+                    <input type="hidden" name="categoria" th:value="${categoria}">
+                </form>
+                <div class="chips">
+                    <a class="chip" th:href="@{/admin/productos(buscar=${buscar})}"
+                       th:classappend="${categoria == 'todas'} ? 'activo'">Todas</a>
+                    <a class="chip" th:each="c : ${categorias}"
+                       th:href="@{/admin/productos(categoria=${c.slug},buscar=${buscar})}"
+                       th:classappend="${categoria == c.slug} ? 'activo'" th:text="${c.etiqueta}">Clubes</a>
+                </div>
+            </div>
+
+            <div class="tabla-wrap" th:if="${!#lists.isEmpty(resultado.content)}">
+                <table>
+                    <thead>
+                    <tr>
+                        <th>Producto</th>
+                        <th>Categoría</th>
+                        <th class="num">Precio</th>
+                        <th class="num">Stock</th>
+                        <th>Estado</th>
+                        <th class="num">Acciones</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr th:each="p : ${resultado.content}">
+                        <td>
+                            <div class="celda-producto">
+                                <img class="miniatura" th:src="@{/imgs/{f}(f=${p.imagen})}" alt="">
+                                <div>
+                                    <a th:href="@{/admin/productos/{id}/editar(id=${p.id})}" th:text="${p.nombre}">Brasil</a>
+                                    <small th:text="${p.slug}">brasil</small>
+                                </div>
+                            </div>
+                        </td>
+                        <td th:text="${p.categoria.etiqueta}">Selecciones</td>
+                        <td class="num" th:text="'$' + ${#numbers.formatInteger(p.precio,1,'COMMA')}">$600</td>
+                        <td class="num">
+                            <form class="stock-form" th:action="@{/admin/productos/{id}/stock(id=${p.id})}" method="post">
+                                <input type="hidden" name="categoria" th:value="${categoria}">
+                                <input type="hidden" name="buscar" th:value="${buscar}">
+                                <input type="hidden" name="pagina" th:value="${resultado.number}">
+                                <input type="number" name="stock" min="0" max="100000" step="1" th:value="${p.stock}"
+                                       th:classappend="${p.stock <= umbralStockBajo} ? 'stock-bajo'" aria-label="Stock">
+                                <button class="btn btn-outline btn-sm" type="submit">Guardar</button>
+                            </form>
+                        </td>
+                        <td>
+                <span class="insignia" th:classappend="${p.activo} ? 'insignia-activo' : 'insignia-inactivo'"
+                      th:text="${p.activo} ? 'Activo' : 'Inactivo'">Activo</span>
+                        </td>
+                        <td>
+                            <div class="acciones">
+                                <a class="btn btn-outline btn-sm" th:href="@{/admin/productos/{id}/editar(id=${p.id})}">Editar</a>
+                                <form th:action="@{/admin/productos/{id}/activo(id=${p.id})}" method="post">
+                                    <input type="hidden" name="categoria" th:value="${categoria}">
+                                    <input type="hidden" name="buscar" th:value="${buscar}">
+                                    <input type="hidden" name="pagina" th:value="${resultado.number}">
+                                    <button class="btn btn-outline btn-sm" type="submit"
+                                            th:text="${p.activo} ? 'Desactivar' : 'Activar'">Desactivar</button>
+                                </form>
+                            </div>
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <p class="vacio" th:if="${#lists.isEmpty(resultado.content)}">No se encontraron productos con ese filtro.</p>
+
+            <div class="paginacion" th:if="${resultado.totalPages > 1}">
+        <span class="paginacion-info"
+              th:text="${'Mostrando ' + (resultado.number * resultado.size + 1) + '–' + (resultado.number * resultado.size + resultado.numberOfElements) + ' de ' + resultado.totalElements}">Mostrando 1–10 de 14</span>
+                <nav class="paginacion-links" aria-label="Paginación">
+                    <a th:if="${resultado.hasPrevious()}"
+                       th:href="@{/admin/productos(categoria=${categoria},buscar=${buscar},pagina=${resultado.number - 1})}"
+                       aria-label="Anterior">‹</a>
+                    <span th:unless="${resultado.hasPrevious()}" class="deshabilitado">‹</span>
+                    <th:block th:each="n : ${#numbers.sequence(0, resultado.totalPages - 1)}">
+                        <a th:if="${n != resultado.number}"
+                           th:href="@{/admin/productos(categoria=${categoria},buscar=${buscar},pagina=${n})}" th:text="${n + 1}">1</a>
+                        <span th:if="${n == resultado.number}" class="activo" th:text="${n + 1}">1</span>
+                    </th:block>
+                    <a th:if="${resultado.hasNext()}"
+                       th:href="@{/admin/productos(categoria=${categoria},buscar=${buscar},pagina=${resultado.number + 1})}"
+                       aria-label="Siguiente">›</a>
+                    <span th:unless="${resultado.hasNext()}" class="deshabilitado">›</span>
+                </nav>
+            </div>
+        </section>
+    </main>
+</th:block>
