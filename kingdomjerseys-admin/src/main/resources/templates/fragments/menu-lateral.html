@@ -1,0 +1,19 @@
+<aside xmlns:th="http://www.thymeleaf.org" class="sidebar" th:fragment="menu(seccion)">
+  <a class="sidebar-logo" th:href="@{/admin/productos}">
+    <img th:src="@{/imgs/logo-corona.svg}" alt="">
+    <span>KINGDOMJERSEYS</span>
+  </a>
+
+  <p class="sidebar-label">ADMINISTRACIÓN</p>
+
+  <nav class="sidebar-nav">
+    <a th:href="@{/admin/productos}" th:classappend="${seccion == 'productos'} ? 'activo'">
+      <img th:src="@{/imgs/iconos/shirt-hueso.svg}" alt="">
+      <span>Productos</span>
+    </a>
+    <a th:href="@{/admin/pedidos}" th:classappend="${seccion == 'pedidos'} ? 'activo'">
+      <img th:src="@{/imgs/iconos/package-hueso.svg}" alt="">
+      <span>Pedidos</span>
+    </a>
+  </nav>
+</aside>

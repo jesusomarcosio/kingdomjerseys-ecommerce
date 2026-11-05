@@ -1,16 +1,13 @@
 package com.kingdomjerseys.ecommerce.config;
 
-import com.kingdomjerseys.ecommerce.model.Administrador;
 import com.kingdomjerseys.ecommerce.model.DetallePedido;
 import com.kingdomjerseys.ecommerce.model.Pedido;
 import com.kingdomjerseys.ecommerce.model.Producto;
 import com.kingdomjerseys.ecommerce.model.enums.Categoria;
 import com.kingdomjerseys.ecommerce.model.enums.EstadoPedido;
-import com.kingdomjerseys.ecommerce.repository.AdministradorRepository;
 import com.kingdomjerseys.ecommerce.repository.PedidoRepository;
 import com.kingdomjerseys.ecommerce.repository.ProductoRepository;
 import org.springframework.boot.CommandLineRunner;
-import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -27,28 +24,17 @@ public class DataInitializer implements CommandLineRunner {
             "Diseño propio de Kingdom Studio. Corte relajado para usarse todos los días.";
 
     private final ProductoRepository productoRepository;
-    private final AdministradorRepository administradorRepository;
     private final PedidoRepository pedidoRepository;
-    private final PasswordEncoder passwordEncoder;
 
     public DataInitializer(ProductoRepository productoRepository,
-                           AdministradorRepository administradorRepository,
-                           PedidoRepository pedidoRepository,
-                           PasswordEncoder passwordEncoder) {
+                           PedidoRepository pedidoRepository) {
         this.productoRepository = productoRepository;
-        this.administradorRepository = administradorRepository;
         this.pedidoRepository = pedidoRepository;
-        this.passwordEncoder = passwordEncoder;
     }
 
     @Override
     @Transactional
     public void run(String... args) {
-        if (administradorRepository.count() == 0) {
-            // Solo desarrollo
-            administradorRepository.save(new Administrador(
-                    "Administrador", "admin@kingdomjerseys.com", passwordEncoder.encode("Admin123!")));
-        }
         if (productoRepository.count() == 0) cargarProductos();
         if (pedidoRepository.count() == 0) cargarPedidos();
     }

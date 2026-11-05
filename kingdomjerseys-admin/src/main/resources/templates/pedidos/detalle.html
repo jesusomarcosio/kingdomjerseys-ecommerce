@@ -1,0 +1,77 @@
+<!--/*@thymesVar id="pedido" type="com.kingdomjerseys.admin.model.Pedido"*/-->
+<!--/*@thymesVar id="estados" type="com.kingdomjerseys.admin.model.EstadoPedido[]"*/-->
+<!DOCTYPE html>
+<th:block th:replace="~{layout/base :: layout(~{::title}, ~{::main}, 'pedidos')}">
+  <title th:text="'Pedido #' + ${pedido.id} + ' | KingdomJerseys Admin'">Pedido | KingdomJerseys Admin</title>
+  <main class="contenido">
+    <div class="pagina-titulo">
+      <div>
+        <div class="eyebrow">PEDIDO</div>
+        <h1 th:text="'#' + ${pedido.id}">#1</h1>
+      </div>
+      <a class="btn btn-outline" th:href="@{/admin/pedidos}">Volver</a>
+    </div>
+
+    <section class="bloque">
+      <div class="bloque-cuerpo">
+        <dl class="datos-lista">
+          <div>
+            <dt>Cliente</dt>
+            <dd th:text="${pedido.nombreCliente}">Cliente</dd>
+          </div>
+          <div>
+            <dt>Correo</dt>
+            <dd th:text="${pedido.correoCliente}">correo@ejemplo.com</dd>
+          </div>
+          <div>
+            <dt>Fecha</dt>
+            <dd th:text="${#temporals.format(pedido.fecha, 'dd/MM/yyyy HH:mm')}">01/01/2026</dd>
+          </div>
+          <div>
+            <dt>Producto</dt>
+            <dd th:text="${pedido.producto.nombre}">Producto</dd>
+          </div>
+          <div>
+            <dt>Talla y cantidad</dt>
+            <dd th:text="${pedido.talla} + ' · ' + ${pedido.cantidad} + ' pieza(s)'">M · 1 pieza(s)</dd>
+          </div>
+          <div>
+            <dt>Total</dt>
+            <dd th:text="'$' + ${#numbers.formatDecimal(pedido.total, 1, 'COMMA', 2, 'POINT')}">$600.00</dd>
+          </div>
+          <div>
+            <dt>Dirección de envío</dt>
+            <dd th:text="${pedido.direccionEnvio}">Dirección</dd>
+          </div>
+          <div>
+            <dt>Estado</dt>
+            <dd>
+              <span class="insignia" th:classappend="'insignia-' + ${#strings.toLowerCase(pedido.estado.name())}"
+                    th:text="${pedido.estado.etiqueta}">Pendiente</span>
+            </dd>
+          </div>
+        </dl>
+      </div>
+    </section>
+
+    <section class="bloque" th:unless="${pedido.estado.esFinal()}">
+      <div class="bloque-cabecera">
+        <h2>Actualizar estado</h2>
+      </div>
+
+      <div class="bloque-cuerpo">
+        <form class="cambiar-estado" th:action="@{/admin/pedidos/{id}/estado(id=${pedido.id})}" method="post">
+          <select name="estado" aria-label="Nuevo estado">
+            <option th:each="estado : ${estados}" th:value="${estado}" th:text="${estado.etiqueta}"
+                    th:selected="${estado == pedido.estado}">Pendiente</option>
+          </select>
+          <button class="btn btn-primary" type="submit">Guardar estado</button>
+        </form>
+      </div>
+    </section>
+
+    <p class="ayuda nota-pie" th:if="${pedido.estado.esFinal()}">
+      Este pedido ya está cerrado y no se puede modificar.
+    </p>
+  </main>
+</th:block>
